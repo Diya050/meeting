@@ -4,8 +4,8 @@ app_name = "meeting"
 app_title = "Meeting"
 app_publisher = "Diya Baweja"
 app_description = "Prepare agendas, send invitations and record minutes."
-app_email = "meeting@diya.com"
-app_license = "n"
+app_email = "hello@frappe.io"
+app_license = "MIT"
 
 # Includes in <head>
 # ------------------
@@ -49,7 +49,7 @@ app_license = "n"
 # ----------
 
 # automatically create page for each record of this doctype
-# website_generators = ["Web Page"]
+website_generators = ["Meeting"]
 
 # Jinja
 # ----------
@@ -117,6 +117,16 @@ app_license = "n"
 # Document Events
 # ---------------
 # Hook on document methods and events
+
+doc_events = {
+	"User": {
+		"after_insert": "meeting.api.make_orientation_meeting"
+	},
+	"ToDo": {
+		"on_update": "meeting.api.update_minute_status",
+		"on_trash": "meeting.api.update_minute_status"
+	}
+}
 
 # doc_events = {
 #	"*": {

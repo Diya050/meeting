@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-26 19:08:23.184656",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "attendee",
+  "full_name",
+  "column_break_045k4",
+  "accepted",
+  "attended"
+ ],
+ "fields": [
+  {
+   "fieldname": "attendee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Attendee",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_045k4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "accepted",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Invitation Accepted?"
+  },
+  {
+   "default": "0",
+   "fieldname": "attended",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Attended"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-08-26 19:09:47.963754",
+ "modified_by": "Administrator",
+ "module": "Meeting",
+ "name": "Meeting Attendee",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
