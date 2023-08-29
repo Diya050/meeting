@@ -39,7 +39,7 @@ def send_invitation_emails(meeting):
 def send_minutes(meeting):
 	meeting = frappe.get_doc("Meeting", meeting)
 	sender_fullname = get_fullname(frappe.session.user)
-	if meeting.status == "Invitation Sent":
+	if meeting.status == "Completed":
 		if meeting.minutes:
 			for d in meeting.minutes:
 				message = frappe.get_template("templates/emails/minute_notification.html").render({
@@ -56,7 +56,7 @@ def send_minutes(meeting):
 					reference_doctype=meeting.doctype,
 					reference_name=meeting.name,
 					)
-			meeting.status = "In Progress"
+			meeting.status = "Minutes Sent"
 			meeting.save()
 			frappe.msgprint(_("Minutes Sent"))
 		else:

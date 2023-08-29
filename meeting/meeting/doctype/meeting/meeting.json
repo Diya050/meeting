@@ -38,7 +38,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Planned\nInvitation Sent\nIn Progress\nCompleted\nCancelled\nMinutes Sent",
+   "options": "Planned\nInvitation Sent\nIn Progress\nCompleted\nMinutes Sent\nCancelled",
    "reqd": 1
   },
   {
@@ -140,7 +140,7 @@
    "label": "Minutes"
   },
   {
-   "depends_on": "eval:doc.status === \"In Progress\"",
+   "depends_on": "eval:doc.status === \"Completed\"",
    "fieldname": "send_minutes",
    "fieldtype": "Button",
    "label": "Send Minutes"
@@ -156,7 +156,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-26 20:21:26.351733",
+ "modified": "2023-08-29 20:13:22.525641",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",
