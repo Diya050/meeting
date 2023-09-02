@@ -62,7 +62,7 @@ def send_minutes(meeting):
 		else:
 			frappe.msgprint("Enter atleast one Minute for Sending")
 	else:
-		frappe.msgprint(_("Meeting Status must be 'Invitation Sent'"))
+		frappe.msgprint(_("Meeting Status must be 'Completed'"))
 
 @frappe.whitelist()
 def get_meetings(start, end):
