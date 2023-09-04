@@ -20,6 +20,27 @@ frappe.ui.form.on("Meeting", {
 	}
 
 	},
+		start_meeting: function(frm) {
+			if(frm.doc.__islocal) {
+					msgprint(__("Please save before Sending."));
+					throw "Sending error";
+				}
+			else{
+			if (frm.doc.status==="Invitation Sent") {
+			frappe.call({
+				method: "meeting.api.start_meeting_message",
+				args: {
+					meeting: frm.doc.name
+				},
+					callback: function(r) {
+							frm.clear_custom_buttons()
+							frm.refresh()
+						}
+				});
+			}
+	}
+
+	},
 		send_minutes: function(frm) {
 			if(frm.doc.__islocal) {
 						msgprint(__("Please save before Sending."));
@@ -37,6 +58,8 @@ frappe.ui.form.on("Meeting", {
 		}
 		}
 });
+
+
 
 frappe.ui.form.on("Meeting Attendee", {
 	attendee: function(frm, cdt, cdn) {
