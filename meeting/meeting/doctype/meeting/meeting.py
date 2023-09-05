@@ -16,6 +16,22 @@ class Meeting(WebsiteGenerator):
 	def validate(self):
 		self.page_name = self.name.lower()
 		self.validate_attendees()
+		self.check_for_conflicting_meetings()
+
+	def check_for_conflicting_meetings(self):
+		# Check for other meetings on the same date and time
+		conflicting_meetings = frappe.get_all("Meeting",
+		filters={
+			"date": self.date,
+			"from_time": (">=", self.from_time),
+			"to_time": ("<=", self.to_time),
+			"name": ("!=", self.name),  # Exclude the current meeting
+		},
+		fields=["name"]
+		)
+
+		if conflicting_meetings:
+			frappe.throw(_("There is a conflicting meeting scheduled for the same time on the same day. Please choose a different date or time."))
 
 	def on_update(self):
 		self.sync_todos()
