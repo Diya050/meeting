@@ -13,10 +13,12 @@
   "page_name",
   "route",
   "start_meeting",
+  "end_meeting",
   "column_break_sfmdw",
   "date",
   "from_time",
   "to_time",
+  "duration",
   "agenda_section",
   "agenda",
   "attendees_section",
@@ -159,11 +161,22 @@
    "fieldname": "start_meeting",
    "fieldtype": "Button",
    "label": "Start Meeting"
+  },
+  {
+   "depends_on": "eval:doc.status === \"In Progress\"",
+   "fieldname": "end_meeting",
+   "fieldtype": "Button",
+   "label": "End Meeting"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Duration",
+   "label": "Meeting Duration"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-04 20:06:08.628771",
+ "modified": "2023-09-07 14:04:39.489721",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",

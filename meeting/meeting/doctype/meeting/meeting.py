@@ -7,6 +7,9 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from frappe.website.website_generator import WebsiteGenerator
+from datetime import datetime,date
+from frappe.utils import get_time
+
 
 class Meeting(WebsiteGenerator):
 	website = frappe._dict(
@@ -15,8 +18,30 @@ class Meeting(WebsiteGenerator):
 
 	def validate(self):
 		self.page_name = self.name.lower()
+		self.validate_time()
 		self.validate_attendees()
 		self.check_for_conflicting_meetings()
+
+	
+	def before_save(self):
+		# Calculate the duration if both from_time and to_time are set
+		if self.from_time and self.to_time:
+			from_time = datetime.strptime(self.from_time, "%H:%M:%S")
+			to_time = datetime.strptime(self.to_time, "%H:%M:%S")
+
+			# Calculate the duration in minutes
+			duration_hours = (to_time - from_time).total_seconds()
+
+			# Format the duration with two decimal places
+		formatted_duration = "{:.2f}".format(duration_hours)
+
+		# Set the formatted duration in the document's field
+		self.duration = formatted_duration	
+		
+		
+	def validate_time(self):
+		if self.from_time > self.to_time:
+			frappe.throw(_("From Time must be earlier than To Time."))
 
 	def check_for_conflicting_meetings(self):
 		# Check for other meetings on the same date and time
@@ -96,3 +121,5 @@ def get_full_name(attendee):
 
 	# concatenates by space if it has value
 	return " ".join(filter(None, [user.first_name, user.middle_name, user.last_name]))
+	
+

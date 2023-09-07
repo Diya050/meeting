@@ -103,7 +103,18 @@ def start_meeting_message(meeting):
         frappe.msgprint(_("Meeting Status updated to 'In Progress'"))
     else:
         frappe.msgprint(_("Meeting Status must be 'Invitation Sent' to start the meeting"))
+        
+        
+@frappe.whitelist()
+def end_meeting_message(meeting):
+    meeting = frappe.get_doc("Meeting", meeting)
 
+    if meeting.status == "In Progress":  
+    	meeting.status = "Completed"
+    	meeting.save()
+    	frappe.msgprint(_("Meeting Status updated to 'Completed'"))
+    else:
+    	frappe.msgprint(_("Meeting Status must be 'In Progress' to end the meeting"))      
 
 
 @frappe.whitelist()
