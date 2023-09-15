@@ -36,6 +36,32 @@ def send_invitation_emails(meeting):
 			frappe.msgprint("Enter atleast one Attendee for Sending")
 	else:
 		frappe.msgprint(_("Meeting Status must be 'Planned'"))
+		
+@frappe.whitelist()
+def end_meeting_message(meeting):
+    meeting = frappe.get_doc("Meeting", meeting)
+
+    if meeting.status == "In Progress":
+        """message = "Meeting has ended."
+
+        for attendee in meeting.attendees:
+            frappe.publish_realtime(event="meeting_ended", message=message, user=attendee.attendee)
+            
+        for attendee in meeting.attendees:
+            frappe.sendmail(
+                recipients=[attendee.attendee],
+                sender=frappe.session.user,
+                subject="Meeting Ended: " + meeting.title,
+                message=message
+            )
+"""
+        meeting.status = "Completed"
+        meeting.save()
+        frappe.msgprint(_("Meeting Status updated to 'Completed'"))
+    else:
+        frappe.msgprint(_("Meeting Status must be 'In Progress' to start the meeting"))
+
+	
 
 @frappe.whitelist()
 def send_minutes(meeting):
@@ -103,19 +129,9 @@ def start_meeting_message(meeting):
         frappe.msgprint(_("Meeting Status updated to 'In Progress'"))
     else:
         frappe.msgprint(_("Meeting Status must be 'Invitation Sent' to start the meeting"))
-        
-        
-@frappe.whitelist()
-def end_meeting_message(meeting):
-    meeting = frappe.get_doc("Meeting", meeting)
 
-    if meeting.status == "In Progress":  
-    	meeting.status = "Completed"
-    	meeting.save()
-    	frappe.msgprint(_("Meeting Status updated to 'Completed'"))
-    else:
-    	frappe.msgprint(_("Meeting Status must be 'In Progress' to end the meeting"))      
-
+    	
+    	
 
 @frappe.whitelist()
 def get_meetings(start, end):

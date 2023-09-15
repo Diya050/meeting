@@ -42,12 +42,12 @@ frappe.ui.form.on("Meeting", {
 
 	},
 		end_meeting: function(frm) {
-			if(frm.doc.__islocal) {
+		if(frm.doc.__islocal) {
 					msgprint(__("Please save before Sending."));
 					throw "Sending error";
 				}
-			else{
-			if (frm.doc.status==="In Progress") {
+		else{
+		if (frm.doc.status==="In Progress") {
 			frappe.call({
 				method: "meeting.api.end_meeting_message",
 				args: {
@@ -57,8 +57,8 @@ frappe.ui.form.on("Meeting", {
 							frm.clear_custom_buttons()
 							frm.refresh()
 						}
-				});
-			}
+			});
+		}
 	}
 
 	},
@@ -68,7 +68,7 @@ frappe.ui.form.on("Meeting", {
 						throw "Sending error";
 					}
 		else{
-			if (frm.doc.status==="In Progress") {
+			if (frm.doc.status==="Completed") {
 				frappe.call({
 					method: "meeting.api.send_minutes",
 					args: {
@@ -76,8 +76,8 @@ frappe.ui.form.on("Meeting", {
 					}
 				});
 			}
-		}
-		}
+	}
+	}
 });
 
 

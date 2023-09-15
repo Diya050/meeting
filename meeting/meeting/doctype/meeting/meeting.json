@@ -77,8 +77,7 @@
   {
    "fieldname": "to_time",
    "fieldtype": "Time",
-   "label": "To Time",
-   "reqd": 1
+   "label": "To Time"
   },
   {
    "collapsible": 1,
@@ -176,7 +175,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-07 14:04:39.489721",
+ "modified": "2023-09-10 22:58:25.391595",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",

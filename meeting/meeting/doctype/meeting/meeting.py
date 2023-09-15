@@ -26,17 +26,19 @@ class Meeting(WebsiteGenerator):
 	def before_save(self):
 		# Calculate the duration if both from_time and to_time are set
 		if self.from_time and self.to_time:
+			self.from_time = str(self.from_time)  # Convert to string
+			self.to_time = str(self.to_time) 
 			from_time = datetime.strptime(self.from_time, "%H:%M:%S")
 			to_time = datetime.strptime(self.to_time, "%H:%M:%S")
 
 			# Calculate the duration in minutes
-			duration_hours = (to_time - from_time).total_seconds()
+			duration_hours = (to_time - from_time).total_seconds() 
 
 			# Format the duration with two decimal places
-		formatted_duration = "{:.2f}".format(duration_hours)
+			formatted_duration = "{:.2f}".format(duration_hours)
 
-		# Set the formatted duration in the document's field
-		self.duration = formatted_duration	
+			# Set the formatted duration in the document's field
+			self.duration = formatted_duration	
 		
 		
 	def validate_time(self):
@@ -122,4 +124,3 @@ def get_full_name(attendee):
 	# concatenates by space if it has value
 	return " ".join(filter(None, [user.first_name, user.middle_name, user.last_name]))
 	
-

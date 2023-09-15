@@ -1,9 +1,12 @@
 <p>
-<span class="label label-default"> {{ sender }}</span> assigned you a Minute
+    <span class="label label-default"> {{ sender }}</span> assigned you a Minute
 </p>
 <blockquote
-	style="border-left: 3px solid #d1d8dd; padding: 7px 15px; margin-left: 0px;">
-	Minute Description: {{ description | markdown }}
-  Action to be taken: {{ action | markdown }}
-  Complete By: {{ complete_by.strftime('%d %B %Y') or '' }}
+    style="border-left: 3px solid #d1d8dd; padding: 7px 15px; margin-left: 0px;">
+    Minute Description: {{ description | markdown }}
+    Action to be taken: {{ action | markdown }}
+    {% if complete_by %}
+    Complete By: {{ complete_by.strftime('%d %B %Y') }}
+    {% endif %}
 </blockquote>
+
