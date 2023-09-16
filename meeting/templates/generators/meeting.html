@@ -2,14 +2,16 @@
 
 {% block content %}
 
-<div class="px-1 row">
-	<pre>    </pre>
-	<h2>{{ title }}</h2>
+<div class="px-2 row">
+	<pre>      </pre>
+	<h1>{{ title }}</h1>
 	</div>
-	<div class="row">
+	<div class="px-2 row">
 	<pre>    </pre>
+	
 	<ul class="list-unstyled">
-	<br>
+	<br><blockquote
+	style="border-left: 3px solid #d1d8dd; padding: 7px 15px; margin-left: 0px;">
 		<li>
 			<label>Date:</label> {{ doc.get_formatted("date") }}
 		</li>
@@ -19,9 +21,13 @@
 		<li>
 			<label>Status: </label> {{ doc.status }}
 		</li>
+	</blockquote>
 	</ul>
+	
 	</div>
+	
 	<div class="col">
+	<div class="px-10 row">
 	
             {%- if status == 'Completed' -%}
 
@@ -43,7 +49,7 @@
             <span class="badge badge-primary">Cancelled</span>
 
             {%- endif -%}
-</div>
+</div></div>
 	<div class="col">
 	<pre>    </pre>
 	<hr>
@@ -57,13 +63,33 @@
 	</ul>
 
 	<hr>
+	<h2>Supplementary Agenda:</h2>
+	<ul>
+		{% for agenda in doc.supplementary_agenda %}
+		<li>
+			{{ agenda.description }}
+		</li>
+		{% endfor %}
+	</ul>
+
+	<hr>
+	<h2>Agenda By Chairman Permission:</h2>
+	<ul>
+		{% for agenda in doc.by_chairman_permisssion %}
+		<li>
+			{{ agenda.description }}
+		</li>
+		{% endfor %}
+	</ul>
+
+	<hr>
 	<h2>Attendees:</h2>
 	<ul>
 		{% for attendee in doc.attendees %}
 		<li>
 			{{ attendee.full_name }} {% if attendee.accepted %} <i class="icon icon-ok"></i> {% endif %}
 		</li>
-		{% endfor %}
+		{% endfor %}but can't check whether its working now or not on my system
 	</ul>
 
 	<hr>
