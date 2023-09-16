@@ -33,8 +33,7 @@
   "minutes_section",
   "minutes",
   "minutes_common",
-  "send_minutes",
-  "workflow_state"
+  "send_minutes"
  ],
  "fields": [
   {
@@ -202,16 +201,11 @@
    "fieldtype": "Table",
    "label": "Agenda By Chairman Permission",
    "options": "Agenda By Chairman Permission"
-  },
-  {
-   "fieldname": "workflow_state",
-   "fieldtype": "Data",
-   "label": "Workflow_state"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-16 22:32:25.760531",
+ "modified": "2023-09-16 22:37:06.693153",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",
