@@ -2,15 +2,15 @@
 
 {% block content %}
 
-<div class="px-2 row">
-	<pre>      </pre>
+<div class="col">
+	
 	<h1>{{ title }}</h1>
 	</div>
-	<div class="px-2 row">
-	<pre>    </pre>
+	<div class="col">
+	<br>
 	
 	<ul class="list-unstyled">
-	<br><blockquote
+	<blockquote
 	style="border-left: 3px solid #d1d8dd; padding: 7px 15px; margin-left: 0px;">
 		<li>
 			<label>Date:</label> {{ doc.get_formatted("date") }}
@@ -27,7 +27,7 @@
 	</div>
 	
 	<div class="col">
-	<div class="px-10 row">
+	<div class="col">
 	
             {%- if status == 'Completed' -%}
 
