@@ -20,6 +20,8 @@ def send_invitation_emails(meeting):
 					"to_time":meeting.to_time,
 					"invitation_message":meeting.invitation_message,
 					"agenda": meeting.agenda,
+					"supplementary_agenda": meeting.supplementary_agenda,
+					"by_chairman_permission": meeting.by_chairman_permission,
 				})
 				frappe.sendmail(
 				recipients=[d.attendee for d in meeting.attendees],

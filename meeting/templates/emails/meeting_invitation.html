@@ -19,3 +19,17 @@
     <li>{{ each.description }}</li>
 {% endfor %}
 {% endif %}
+
+{% if supplementary_agenda %}
+<h4>Meeting Supplementary Agenda</h4>
+{% for each in supplementary_agenda %}
+    <li>{{ each.description }}</li>
+{% endfor %}
+{% endif %}
+
+{% if by_chairman_permission %}
+<h4>Agenda By Chairman Permission</h4>
+{% for each in by_chairman_permission %}
+    <li>{{ each.description }}</li>
+{% endfor %}
+{% endif %}

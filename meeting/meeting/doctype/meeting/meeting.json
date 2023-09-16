@@ -21,6 +21,10 @@
   "duration",
   "agenda_section",
   "agenda",
+  "supplementary_agenda_section",
+  "supplementary_agenda",
+  "by_chairman_permission_section",
+  "by_chairman_permission",
   "attendees_section",
   "attendees",
   "invitation_section",
@@ -171,11 +175,37 @@
    "fieldname": "duration",
    "fieldtype": "Duration",
    "label": "Meeting Duration"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "supplementary_agenda",
+   "fieldname": "supplementary_agenda_section",
+   "fieldtype": "Section Break",
+   "label": "Supplementary Agenda"
+  },
+  {
+   "fieldname": "supplementary_agenda",
+   "fieldtype": "Table",
+   "label": "Supplementary Agenda",
+   "options": "Meeting Supplementary Agenda"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "by_chairman_permission;",
+   "fieldname": "by_chairman_permission_section",
+   "fieldtype": "Section Break",
+   "label": "Agenda By Chairman Permission"
+  },
+  {
+   "fieldname": "by_chairman_permission",
+   "fieldtype": "Table",
+   "label": "Agenda By Chairman Permission",
+   "options": "Agenda By Chairman Permission"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-10 22:58:25.391595",
+ "modified": "2023-09-16 13:03:14.085891",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",
