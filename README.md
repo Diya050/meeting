@@ -42,18 +42,7 @@ Are your meetings feeling mundane and unproductive? Say hello to a game-changer 
 
 - **Automatic Calculations:** The app automatically calculates meeting duration based on start and end times.
 
-- **Efficient Communication:** Facilitate real-time communication during meetings with online attendees.
-
 - **Meeting History:** Access a list of past meetings with their respective statuses in different colors for easy reference.
-
-- **Supplementary Agenda:** Add supplementary agendas and agenda items with the chairman's permission.
-
-
-## Key Benefits:
-
-- **Improved Meeting Productivity:** The Meeting App streamlines the meeting management process, saving time and ensuring meetings stay on track.
-
-- **Effective Communication:** Attendees are kept informed at every stage of the meeting, from invitations to start notifications to minutes.
 
 - **Organized Meeting Records:** Easily access past meeting records and minutes, making it simple to reference previous discussions and decisions.
 
