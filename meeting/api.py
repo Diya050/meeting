@@ -66,37 +66,37 @@ def end_meeting_message(meeting):
 	
 @frappe.whitelist()
 def send_minutes(meeting):
-    meeting = frappe.get_doc("Meeting", meeting)
-    sender_fullname = get_fullname(frappe.session.user)
+	meeting = frappe.get_doc("Meeting", meeting)
+	sender_fullname = get_fullname(frappe.session.user)
 
-    if meeting.status == "Completed":
-        if meeting.minutes:
-            # Prepare a message with a table containing all meeting minutes
-            message = frappe.get_template("templates/emails/minute_notification.html").render({
-                "sender": sender_fullname,
-                "meeting_title": meeting.title,
-                "minutes_list": meeting.minutes,
-            })
+	if meeting.status == "Completed":
+		if meeting.minutes:
+			# Prepare a message with a table containing all meeting minutes
+			message = frappe.get_template("templates/emails/minute_notification.html").render({
+				"sender": sender_fullname,
+				"meeting_title": meeting.title,
+				"minutes_list": meeting.minutes,
+			})
 
-            # Get a list of all attendees
-            attendees = [attendee.attendee for attendee in meeting.attendees]
+			# Get a list of all attendees
+			attendees = [attendee.attendee for attendee in meeting.attendees]
 
-            frappe.sendmail(
-                recipients=attendees,
-                sender=frappe.session.user,
-                subject="Meeting Minutes: " + meeting.title,
-                message=message,
-                reference_doctype=meeting.doctype,
-                reference_name=meeting.name,
-            )
+			frappe.sendmail(
+				recipients=attendees,
+				sender=frappe.session.user,
+				subject="Meeting Minutes: " + meeting.title,
+				message=message,
+				reference_doctype=meeting.doctype,
+				reference_name=meeting.name,
+			)
 
-            meeting.status = "Minutes Sent"
-            meeting.save()
-            frappe.msgprint(_("Minutes Sent"))
-        else:
-            frappe.msgprint("Enter at least one Minute for Sending")
-    else:
-        frappe.msgprint(_("Meeting Status must be 'Completed'"))
+			meeting.status = "Minutes Sent"
+			meeting.save()
+			frappe.msgprint(_("Minutes Sent"))
+		else:
+			frappe.msgprint("Enter at least one Minute for Sending")
+	else:
+		frappe.msgprint(_("Meeting Status must be 'Completed'"))
 
 
 

@@ -18,8 +18,8 @@ class Meeting(WebsiteGenerator):
 
 	def validate(self):
 		self.page_name = self.name.lower()
-		self.validate_time()
 		self.validate_attendees()
+		self.validate_time()
 		self.check_for_conflicting_meetings()
 
 	
@@ -60,10 +60,12 @@ class Meeting(WebsiteGenerator):
 		if conflicting_meetings:
 			frappe.throw(_("There is a conflicting meeting scheduled for the same time on the same day. Please choose a different date or time."))
 
-"""	def on_update(self):
-		self.sync_todos()
-	#	self.send_minutes()
-"""
+	"""
+	def on_update(self):
+		#	self.sync_todos()
+		#	self.send_minutes()
+	"""
+	
 	def validate_attendees(self):
 		"""Set missing names and warn if duplicate"""
 		found = []
@@ -75,8 +77,9 @@ class Meeting(WebsiteGenerator):
 				frappe.throw(_("Attendee {0} entered twice").format(attendee.attendee))
 
 			found.append(attendee.attendee)
-
-"""	def sync_todos(self):
+	"""
+	def sync_todos(self):
+		
 		todos_added = [todo.name for todo in
 			frappe.get_all("ToDo",
 				filters={
@@ -114,7 +117,7 @@ class Meeting(WebsiteGenerator):
 
 	def get_context(self, context):
 		context.parents = [{"name": "meetings", "title": "Meetings"}]
-"""
+	"""
 
 @frappe.whitelist()
 def get_full_name(attendee):
