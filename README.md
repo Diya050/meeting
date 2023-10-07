@@ -81,7 +81,7 @@ This section will guide you through the initial setup and help you get started w
 ![meeting4](https://github.com/Diya050/meeting/assets/124448340/b8c5e007-1cd0-4440-a9a0-6ffd569ab847)
 
 
-- You could see your Meeting Progress on website, by clicking on `See on website` in the panel on the left side.
+- You could see your Meeting Progress on website, by clicking on `See on website` in the panel on the left side. Remember that only the meeting to which you have made the changes last would be viewed to all on the website.
 
 ![Screenshot from 2023-10-07 20-12-36](https://github.com/Diya050/meeting/assets/124448340/9e53c4a1-1ebe-4bb1-9ddf-150c44cebac0)
 
