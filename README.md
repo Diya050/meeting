@@ -65,7 +65,7 @@ This section will guide you through the initial setup and help you get started w
   
 - You also have to manage the permissions that you want to give to each user.
 
-- From the Frappe Desk, from awesome bar navigate to "Meeting List > New Meeting" to create a new meeting.
+- From the Frappe Desk, through awesome bar navigate to "Meeting List > New Meeting" to create a new meeting.
 
 ![meeting2](https://github.com/Diya050/meeting/assets/124448340/79cb159a-6d71-4f0d-bb86-7cc5730fb050)
 
@@ -76,15 +76,14 @@ This section will guide you through the initial setup and help you get started w
 
 
 
-- This will open a dashboard. Fill the Meeting Title, choose meeting status as planned initially, click see on website (so that it is viewed to all), set date and time (Duration will be calculated automatically), set Agenda and add Invitation Message. Save all these changes.
+- This will open a dashboard. Fill the Meeting Title, choose meeting status as planned initially, check `Show on website` (so that it is viewed to all), set date and time (Duration will be calculated automatically), set Agenda and add Invitation Message. Save all these changes.
 
 ![meeting4](https://github.com/Diya050/meeting/assets/124448340/b8c5e007-1cd0-4440-a9a0-6ffd569ab847)
 
 
 - You could see your Meeting Progress on website, by clicking on `See on website` in the panel on the left side.
 
-![meeting5](https://github.com/Diya050/meeting/assets/124448340/0f425e89-a574-4380-bbc1-23f57d6245c3)
-
+![Screenshot from 2023-10-07 20-12-36](https://github.com/Diya050/meeting/assets/124448340/9e53c4a1-1ebe-4bb1-9ddf-150c44cebac0)
 
 
 - Here is how your past records of your meetings can be accessed in the form of list with their statuses in different colours.
@@ -127,7 +126,10 @@ This section will guide you through the initial setup and help you get started w
 
 
 
-- While the meeting is in progress you can type the minutes in the `Minutes Section` but you could send them only after the meeting is completed.
+- While the meeting is `In Progress` you can type the minutes in the `Minutes Section` but you could send them only after the meeting is completed. You can add Actions, provide their Descriptions, give Status (as open or closed), mention Assigned to (some attendee if any) and set date i.e Completed by.
+
+![meeting19](https://github.com/Diya050/meeting/assets/124448340/8479ec8b-84c6-428f-a469-835d33a0fcdb)
+
 
 
 - When the meeting ends, you can click the `End Meeting` button below the status bar. This will send a "Meeting Ended" message to all the attendees and change the meeting status to `Completed`.
@@ -144,11 +146,7 @@ This section will guide you through the initial setup and help you get started w
 
 
 
-- Now you will be able to view `Send Minutes` button in the Minutes Section since the status of your is now "Completed". You can add Actions, provide their Descriptions, give Status (as open or closed), mention Assigned to (some attendee if any) and set date i.e Completed by.
-
-![meeting19](https://github.com/Diya050/meeting/assets/124448340/8479ec8b-84c6-428f-a469-835d33a0fcdb)
-
-
+- Now you will be able to view `Send Minutes` button in the Minutes Section since the status of your is now "Completed". 
 
 - When you click `Send Minutes` button, minutes of meeting would be sent to all attendees and meeting status would change to `Minutes Sent`.
 
@@ -165,4 +163,4 @@ This section will guide you through the initial setup and help you get started w
 - You can also add "Supplementary Agenda" and "Agenda By Chairman Permission" if any at any time and send them by changing meeting status to `Planned`. Saving changes. Clicking `Send Emails` button in Invitation Section.
 
 
-To clinch it all, the Meeting App powered by the Frappe Framework is your go-to solution for revolutionizing the way you manage and conduct meetings. This comprehensive documentation has provided you with a step-by-step guide on how to install, set up, and make the most of this powerful tool.
+> To clinch it all, the Meeting App powered by the Frappe Framework is your go-to solution for revolutionizing the way you manage and conduct meetings. This comprehensive documentation has provided you with a step-by-step guide on how to install, set up, and make the most of this powerful tool.
