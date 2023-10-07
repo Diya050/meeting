@@ -56,5 +56,10 @@ This section will guide you through the initial setup and help you get started w
 
   ![meetings_list](meeting/images/meeting6.png)![meeting6](https://github.com/Diya050/meeting/assets/124448340/a77afa69-fada-4f93-86eb-22783caf9444)
 
-- Now since you have planned the meeting, its time to add attendees and send them invitations for the meeting.
-  
+- Now since you have planned the meeting, its time to add attendees and send them invitations for the meeting. You can add as many attendees as you want by making them users of your frappe app. You can even add groups like a GooGle Group as an user by adding its email to send invitation to all the members in the group.
+
+  ![meeting7](https://github.com/Diya050/meeting/assets/124448340/ea8668c2-08d5-45fa-a924-ba2be7795c7b)
+
+- Now you just have to click `Send Emails` button. With this emails would sent to all attendees and status of the Meeting would change to `Invitation Sent`. 
+
+![meeting8](https://github.com/Diya050/meeting/assets/124448340/1f5586dd-9f21-412b-9399-2b59902a53b2)
