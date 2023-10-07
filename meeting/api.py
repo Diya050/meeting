@@ -64,35 +64,40 @@ def end_meeting_message(meeting):
         frappe.msgprint(_("Meeting Status must be 'In Progress' to end the meeting"))
 
 	
-
 @frappe.whitelist()
 def send_minutes(meeting):
-	meeting = frappe.get_doc("Meeting", meeting)
-	sender_fullname = get_fullname(frappe.session.user)
-	if meeting.status == "Completed":
-		if meeting.minutes:
-			for d in meeting.minutes:
-				message = frappe.get_template("templates/emails/minute_notification.html").render({
-					"sender":sender_fullname,
-					"action": d.action,
-					"description": d.description,
-					"complete_by":d.complete_by
-				})
-				frappe.sendmail(
-					recipients=d.assigned_to,
-					sender=frappe.session.user,
-					subject=meeting.title,
-					message=message,
-					reference_doctype=meeting.doctype,
-					reference_name=meeting.name,
-					)
-			meeting.status = "Minutes Sent"
-			meeting.save()
-			frappe.msgprint(_("Minutes Sent"))
-		else:
-			frappe.msgprint("Enter atleast one Minute for Sending")
-	else:
-		frappe.msgprint(_("Meeting Status must be 'Completed'"))
+    meeting = frappe.get_doc("Meeting", meeting)
+    sender_fullname = get_fullname(frappe.session.user)
+
+    if meeting.status == "Completed":
+        if meeting.minutes:
+            # Prepare a message with a table containing all meeting minutes
+            message = frappe.get_template("templates/emails/minute_notification.html").render({
+                "sender": sender_fullname,
+                "meeting_title": meeting.title,
+                "minutes_list": meeting.minutes,
+            })
+
+            # Get a list of all attendees
+            attendees = [attendee.attendee for attendee in meeting.attendees]
+
+            frappe.sendmail(
+                recipients=attendees,
+                sender=frappe.session.user,
+                subject="Meeting Minutes: " + meeting.title,
+                message=message,
+                reference_doctype=meeting.doctype,
+                reference_name=meeting.name,
+            )
+
+            meeting.status = "Minutes Sent"
+            meeting.save()
+            frappe.msgprint(_("Minutes Sent"))
+        else:
+            frappe.msgprint("Enter at least one Minute for Sending")
+    else:
+        frappe.msgprint(_("Meeting Status must be 'Completed'"))
+
 
 
 @frappe.whitelist()
@@ -183,3 +188,34 @@ def update_minute_status(doc, method=None):
 			if minute.todo == doc.name:
 				minute.db_set("todo", None, update_modified=False)
 				minute.db_set("status", "Closed", update_modified=False)
+				
+
+"""
+@frappe.whitelist()
+def send_minutes(meeting):
+	meeting = frappe.get_doc("Meeting", meeting)
+	sender_fullname = get_fullname(frappe.session.user)
+	if meeting.status == "Completed":
+		if meeting.minutes:
+			for d in meeting.minutes:
+				message = frappe.get_template("templates/emails/minute_notification.html").render({
+					"sender":sender_fullname,
+					"action": d.action,
+					"description": d.description,
+					"complete_by":d.complete_by
+				})
+				frappe.sendmail(
+					recipients=d.assigned_to,
+					sender=frappe.session.user,
+					subject=meeting.title,
+					message=message,
+					reference_doctype=meeting.doctype,
+					reference_name=meeting.name,
+					)
+			meeting.status = "Minutes Sent"
+			meeting.save()
+			frappe.msgprint(_("Minutes Sent"))
+		else:
+			frappe.msgprint("Enter atleast one Minute for Sending")
+	else:
+		frappe.msgprint(_("Meeting Status must be 'Completed'"))"""

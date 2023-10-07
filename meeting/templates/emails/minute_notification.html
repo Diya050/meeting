@@ -1,12 +1,44 @@
-<p>
-    <span class="label label-default"> {{ sender }}</span> assigned you a Minute
-</p>
-<blockquote
-    style="border-left: 3px solid #d1d8dd; padding: 7px 15px; margin-left: 0px;">
-    Minute Description: {{ description | markdown }}
-    Action to be taken: {{ action | markdown }}
-    {% if complete_by %}
-    Complete By: {{ complete_by.strftime('%d %B %Y') }}
-    {% endif %}
-</blockquote>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meeting Minutes: {{ meeting_title }}</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Meeting Minutes: {{ meeting_title }}</h1>
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Action</th>
+            <th>Status</th>
+            <th>Assigned To</th>
+            <th>Complete By</th>
+        </tr>
+        {% for minute in minutes_list %}
+        <tr>
+            <td>{{ minute.description }}</td>
+            <td>{{ minute.action }}</td>
+            <td>{{ minute.status }}</td>
+            <td>{{ minute.assigned_to }}</td>
+            <td>{{ minute.complete_by }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
 
