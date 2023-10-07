@@ -29,19 +29,25 @@ This section will guide you through the initial setup and help you get started w
 
 - Log in to your Frappe instance as a user with the necessary permissions.
  
-![login_page](meeting/images/meeting1.png)
+![login_page](meeting/images/meeting1.png)![meeting1](https://github.com/Diya050/meeting/assets/124448340/1a7402f1-8dfa-4a24-af51-6e759981ff04)
+
   
 - If you are the Meeting Manager then you have to create users with role Meeting Attendee whom you wish to invite for a meeting in future.
 - You also have to manage the permissions that you want to give to each user.
 - From the Frappe Desk, from awesome bar navigate to "Meeting List > New Meeting" to create a new meeting.
-![awesome_bar](meeting/images/meeting2.png)
+![awesome_bar](meeting/images/meeting2.png)![meeting2](https://github.com/Diya050/meeting/assets/124448340/563d840c-efe4-4b5b-8ae3-717c7ccf4f1d)
+
 - Click `Create your first Meeting` to create a meeting:
-![create_meetings](meeting/images/meeting3.png)
+![create_meetings](meeting/images/meeting3.png)![meeting3](https://github.com/Diya050/meeting/assets/124448340/eeec4441-76bb-4212-82a1-720bc38202b4)
+
 - This will open a dashboard. Fill the Meeting Title, choose meeting status as planned initially, click see on website (so that it is viewed to all), set date and time (Duration will be calculated automatically), set Agenda and add Invitation Message.
-![meeting_details](meeting/images/meeting4.png)
+![meeting_details](meeting/images/meeting4.png)![meeting4](https://github.com/Diya050/meeting/assets/124448340/fbb2acca-2b30-4627-9a37-2e4268544976)
+
 - This how meeting details would look like on website:
-  ![website_view](meeting/images/meeting5.png)
+  ![website_view](meeting/images/meeting5.png)![meeting5](https://github.com/Diya050/meeting/assets/124448340/e8c5b41c-7949-44fb-89c2-de4e38462a27)
+
 - Here is how your past meetings can be accessed in the form of list with their statuses in different colours.
-  ![meetings_list](meeting/images/meeting6.png)
+  ![meetings_list](meeting/images/meeting6.png)![meeting6](https://github.com/Diya050/meeting/assets/124448340/a77afa69-fada-4f93-86eb-22783caf9444)
+
 - Now since you have planned the meeting, its time to add attendees and send them invitations for the meeting.
   
