@@ -29,7 +29,7 @@ This section will guide you through the initial setup and help you get started w
 
 - Log in to your Frappe instance as a user with the necessary permissions.
  
-![img1](meeting/public/meet1.png)
+![img1](meeting/images/meeting1.png)
   
 - If you are the Meeting Manager then you have to create users with role Meeting Attendee whom you wish to invite for a meeting in future.
 - You also have to manage the permissions that you want to give to each user.
