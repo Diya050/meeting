@@ -6,7 +6,7 @@ Are your meetings feeling mundane and unproductive? Say hello to a game-changer 
 
 ## Installation
 
-- Set up frappe-bench using [Install frappe](https://github.com/D-codE-Hub/Frappe-ERPNext-Version-14--in-Ubuntu-22.04-LTS
+- Set up frappe-bench using [Install frappe](https://github.com/D-codE-Hub/Frappe-ERPNext-Version-14--in-Ubuntu-22.04-LTS)
 - Create a site for installing Meeting app:
   ```bash
   $ cd frappe-bench
