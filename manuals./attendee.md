@@ -49,4 +49,4 @@ This section will guide you through attending meetings done using Meeting App.
 ![meeting18](https://github.com/Diya050/meeting/assets/124448340/e96b09ae-2688-4be2-b353-d6be458fe50d)
 
 
-> To clinch it all, the Meeting App powered by the Frappe Framework is your go-to solution for revolutionizing the way you manage and conduct meetings. This comprehensive documentation has provided you with a step-by-step guide on how to install, set up, and make the most of this powerful tool.
+> To clinch it all, the Meeting App powered by the Frappe Framework is your go-to solution for revolutionizing the way you manage and conduct meetings. The guide concludes by emphasizing the Meeting App's benefits for managing and conducting meetings effectively.
