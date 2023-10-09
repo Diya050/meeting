@@ -37,7 +37,7 @@ This section will guide you through the initial setup and help you get started w
 
 
 
-- Now since you have planned the meeting, its time to add attendees and send them invitations for the meeting. You can add as many attendees as many as you want if they are users of your frappe app. You can even add groups like a Google Group by asking you administrator to add it as a user by adding its email to send invitation to all the members in the group.
+- Now since you have planned the meeting, its time to add attendees and send them invitations for the meeting. You can add as many attendees as you want if they are users of your frappe app. You can even add groups like a Google Group by asking you administrator to add it as a user by adding its email to send invitation to all the members in the group.
 
 ![meeting7](https://github.com/Diya050/meeting/assets/124448340/adbdfff2-570d-4380-946e-fe55ff6c03ba)
 
