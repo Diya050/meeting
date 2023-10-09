@@ -57,5 +57,5 @@ Are your meetings feeling mundane and unproductive? Say hello to a game-changer 
 
 1. [As the Administrator](manuals./administrator.md)
 2. [As the Meeting Manager](manuals./manager.md)
-3. [As a Meeting Attendee]()
+3. [As a Meeting Attendee](manuals./attendee.md)
 
