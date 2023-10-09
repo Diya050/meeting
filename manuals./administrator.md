@@ -55,7 +55,7 @@ This section will guide you through the initial setup and help you get started w
 
 
 
-- Here a view of your invitation email in your attendees' inbox:
+- Here's a view of your invitation email in your attendees' inbox:
 
 ![meeting10](https://github.com/Diya050/meeting/assets/124448340/5524638c-0009-46b5-9c35-f2618ecc61a2)
 
@@ -69,7 +69,7 @@ This section will guide you through the initial setup and help you get started w
 
 
 
-- Here a view of your `Meeting Started` email in your attendees' inbox (it also mentions whether the meeting was started on time or was late):
+- Here's a view of your `Meeting Started` email in your attendees' inbox (it also mentions whether the meeting was started on time or was late):
 
 ![meeting13](https://github.com/Diya050/meeting/assets/124448340/1ea34e1e-639c-4b14-bd91-b1972b963e1c)
 
@@ -89,7 +89,7 @@ This section will guide you through the initial setup and help you get started w
 
 
 
-- Here a view of your `Meeting Ended` email in your attendees' inbox:
+- Here's a view of your `Meeting Ended` email in your attendees' inbox:
 
 ![meeting16](https://github.com/Diya050/meeting/assets/124448340/8a3bcc26-118b-46a3-bfce-7ed7a44d25ee)
 
@@ -103,7 +103,7 @@ This section will guide you through the initial setup and help you get started w
 
 
 
-- Here a view of your `Meeting Minutes` email in your attendees' inbox:
+- Here's a view of your `Meeting Minutes` email in your attendees' inbox:
   
 ![meeting18](https://github.com/Diya050/meeting/assets/124448340/e96b09ae-2688-4be2-b353-d6be458fe50d)
 
