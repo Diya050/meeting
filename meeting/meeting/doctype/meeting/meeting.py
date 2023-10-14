@@ -22,6 +22,40 @@ class Meeting(WebsiteGenerator):
 		self.validate_time()
 		self.check_for_conflicting_meetings()
 
+		# Check if a title is provided
+		if not self.title:
+			frappe.throw("Meeting title is required.")
+        
+		# Set the title as the name if the name is not provided
+		if not self.name:
+			self.name = self.title
+        
+		# Check if a meeting with the same name already exists
+		existing_meetings = frappe.get_all("Meeting",
+			filters={"name": self.name},
+			fields=["name"],
+			limit=1
+		)
+
+		if existing_meetings:
+			# Automatically generate a unique name based on the title
+			self.name, self.title = self.get_unique_name(self.title)
+
+	def get_unique_name(self, title):
+		# Get the base name from the title
+		base_name = frappe.scrub(title)
+
+		# Find a unique name by appending a counter
+		counter = 1
+		unique_name = base_name
+
+		while frappe.get_all("Meeting", filters={"name": unique_name}):
+			counter += 1
+			unique_name = f"{base_name}-{counter}"
+		updated_title = unique_name.replace("-", " ").title().replace(" ", "-")
+
+
+		return unique_name, updated_title
 	
 	def before_save(self):
 		# Calculate the duration if both from_time and to_time are set
