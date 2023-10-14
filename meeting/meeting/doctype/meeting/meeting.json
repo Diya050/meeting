@@ -10,7 +10,6 @@
   "title",
   "status",
   "show_in_website",
-  "page_name",
   "route",
   "start_meeting",
   "end_meeting",
@@ -53,13 +52,6 @@
    "fieldname": "show_in_website",
    "fieldtype": "Check",
    "label": "Show in Website"
-  },
-  {
-   "fieldname": "page_name",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Page Name",
-   "read_only": 1
   },
   {
    "fieldname": "column_break_sfmdw",
@@ -205,10 +197,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-16 22:37:06.693153",
+ "modified": "2023-10-14 13:43:45.365567",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",
+ "name_case": "Title Case",
  "owner": "Administrator",
  "permissions": [
   {
