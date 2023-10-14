@@ -23,43 +23,39 @@ Are your meetings feeling mundane and unproductive? Say hello to a game-changer 
 - Your app is running at 127.0.0.1:8000
 - Go to http://127.0.0.1:8000/app/meeting for creating new meetings.
 
+## Key Features:
+- **Easy Installation:** Setting up the Meeting App is a breeze with clear installation instructions.
+
+- **User Management:** Admins can create and manage users, granting specific roles and permissions as needed.
+
+- **Meeting Creation:** Create and schedule meetings effortlessly, including setting agendas and invitation messages.
+
+- **Real-time Updates:** Monitor meeting progress in real-time through the "See on website" feature.
+
+- **Invitation Management:** Easily add attendees, whether individuals or groups, and send out invitations with just a click.
+
+- **Email Notifications:** Attendees receive emails at various stages of the meeting, including invitations, start notifications, and minutes.
+
+- **Meeting Status:** Keep track of meeting status, from "Planned" to "In Progress" to "Completed."
+
+- **Minutes Management:** Record and manage meeting minutes, with options to add actions, descriptions, and more.
+
+- **Automatic Calculations:** The app automatically calculates meeting duration based on start and end times.
+
+- **Meeting History:** Access a list of past meetings with their respective statuses in different colors for easy reference.
+
+- **Mark Attendance:** In the Attendees Section, there is checkbox for whether invitation accepted or not and whether meeting attended or not.
+
+- **Organized Meeting Records:** Easily access past meeting records and minutes, making it simple to reference previous discussions and decisions.
+
+- **User-friendly Interface:** The app offers an intuitive interface that is easy to navigate for both administrators and attendees.
+
+- **Flexibility:** The ability to add supplementary agendas and permissions enhances the app's flexibility to accommodate different meeting scenarios.
+
+
 ## Getting Started
 
-This section will guide you through the initial setup and help you get started with creating and managing meetings.
+1. [As the Administrator](manuals./administrator.md)
+2. [As the Meeting Manager](manuals./manager.md)
+3. [As a Meeting Attendee](manuals./attendee.md)
 
-- Log in to your Frappe instance as a user with the necessary permissions.
- 
-![login_page](meeting/images/meeting1.png)![meeting1](https://github.com/Diya050/meeting/assets/124448340/1a7402f1-8dfa-4a24-af51-6e759981ff04)
-
-  
-- If you are the Meeting Manager then you have to create users with role Meeting Attendee whom you wish to invite for a meeting in future.
-  
-- You also have to manage the permissions that you want to give to each user.
-
-- From the Frappe Desk, from awesome bar navigate to "Meeting List > New Meeting" to create a new meeting.
-
-![awesome_bar](meeting/images/meeting2.png)![meeting2](https://github.com/Diya050/meeting/assets/124448340/563d840c-efe4-4b5b-8ae3-717c7ccf4f1d)
-
-- Click `Create your first Meeting` to create a meeting:
-
-![create_meetings](meeting/images/meeting3.png)![meeting3](https://github.com/Diya050/meeting/assets/124448340/eeec4441-76bb-4212-82a1-720bc38202b4)
-
-- This will open a dashboard. Fill the Meeting Title, choose meeting status as planned initially, click see on website (so that it is viewed to all), set date and time (Duration will be calculated automatically), set Agenda and add Invitation Message. Save all these changes.
-
-![meeting_details](meeting/images/meeting4.png)![meeting4](https://github.com/Diya050/meeting/assets/124448340/fbb2acca-2b30-4627-9a37-2e4268544976)
-
-- This how meeting details would look like on website:
-
-  ![website_view](meeting/images/meeting5.png)![meeting5](https://github.com/Diya050/meeting/assets/124448340/e8c5b41c-7949-44fb-89c2-de4e38462a27)
-
-- Here is how your past meetings can be accessed in the form of list with their statuses in different colours.
-
-  ![meetings_list](meeting/images/meeting6.png)![meeting6](https://github.com/Diya050/meeting/assets/124448340/a77afa69-fada-4f93-86eb-22783caf9444)
-
-- Now since you have planned the meeting, its time to add attendees and send them invitations for the meeting. You can add as many attendees as you want by making them users of your frappe app. You can even add groups like a GooGle Group as an user by adding its email to send invitation to all the members in the group.
-
-  ![meeting7](https://github.com/Diya050/meeting/assets/124448340/ea8668c2-08d5-45fa-a924-ba2be7795c7b)
-
-- Now you just have to click `Send Emails` button. With this emails would sent to all attendees and status of the Meeting would change to `Invitation Sent`. 
-
-![meeting8](https://github.com/Diya050/meeting/assets/124448340/1f5586dd-9f21-412b-9399-2b59902a53b2)
