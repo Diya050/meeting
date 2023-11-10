@@ -98,15 +98,18 @@
 	<hr>
 	<h2>Minutes:</h2>
 	<ul>
-		{% for minute in doc.minutes %}
-		<li>
-		<label><b>Action: </b></label> {{ minute.action }}<br>
-		<label><b>Assigned To:</b></label> {{ minute.assigned_to }}
-		<br>
-			<label><b>Description:</b></label> {{ minute.description }}
-			
-		</li><br>
-		{% endfor %}
-	</ul>
+   {% set processed_actions = [] %}
+   {% for minute in doc.minutes %}
+      {% if minute.action not in processed_actions %}
+         <li>
+            <label><b>Action: </b></label> {{ minute.action }}<br>
+            <label><b>Assigned To:</b></label> {{ minute.assigned_to }}<br>
+            <label><b>Description:</b></label> {{ minute.description }}<br>
+         </li>
+         {% set _ = processed_actions.append(minute.action) %}
+      {% endif %}
+   {% endfor %}
+</ul>
+
 </div>
 {% endblock %}
