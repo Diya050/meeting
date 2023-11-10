@@ -36,24 +36,25 @@ class Meeting(WebsiteGenerator):
 			fields=["name"],
 			limit=1
 		)
-
+		
 		if existing_meetings:
 			# Automatically generate a unique name based on the title
-			self.name, self.title = self.get_unique_name(self.title)
+			self.name, self.title = self.get_unique_name(self.name)
+
+
 
 	def get_unique_name(self, title):
 		# Get the base name from the title
-		base_name = frappe.scrub(title)
-
+		base_name = title.replace(' ', '_')
 		# Find a unique name by appending a counter
 		counter = 1
 		unique_name = base_name
 
 		while frappe.get_all("Meeting", filters={"name": unique_name}):
 			counter += 1
-			unique_name = f"{base_name}-{counter}"
-		updated_title = unique_name.replace("-", " ").title().replace(" ", "-")
+			unique_name = f"{base_name.title()} No. {counter}"
 
+		updated_title = unique_name.replace('-', ' ')
 
 		return unique_name, updated_title
 	

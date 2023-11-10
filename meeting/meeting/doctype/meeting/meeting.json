@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "title",
+  "meeting_number",
   "status",
   "show_in_website",
   "route",
@@ -51,6 +52,7 @@
    "default": "0",
    "fieldname": "show_in_website",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Show in Website"
   },
   {
@@ -193,11 +195,18 @@
    "fieldtype": "Table",
    "label": "Agenda By Chairman Permission",
    "options": "Agenda By Chairman Permission"
+  },
+  {
+   "fieldname": "meeting_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Meeting Number",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-14 13:43:45.365567",
+ "modified": "2023-11-10 12:55:17.868526",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",
