@@ -29,6 +29,7 @@ class Meeting(WebsiteGenerator):
 		# Set the title as the name if the name is not provided
 		if not self.name:
 			self.name = self.title
+			
         
 		# Check if a meeting with the same name already exists
 		existing_meetings = frappe.get_all("Meeting",
@@ -43,7 +44,7 @@ class Meeting(WebsiteGenerator):
 
 
 
-	def get_unique_name(self, title):
+	def get_unique_name(self, title, meeting_number):
 		# Get the base name from the title
 		base_name = title.replace(' ', '_')
 		# Find a unique name by appending a counter
@@ -53,7 +54,6 @@ class Meeting(WebsiteGenerator):
 		while frappe.get_all("Meeting", filters={"name": unique_name}):
 			counter += 1
 			unique_name = f"{base_name.title()} No. {counter}"
-
 		updated_title = unique_name.replace('-', ' ')
 
 		return unique_name, updated_title

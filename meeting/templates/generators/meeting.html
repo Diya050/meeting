@@ -54,7 +54,9 @@
 	<pre>    </pre>
 	<hr>
 	<h2>Agenda:</h2>
-	<ul>
+	
+		
+		<ul>
 		{% for agenda in doc.agenda %}
 		<li>
 			{{ agenda.description }}
@@ -64,17 +66,18 @@
 
 	<hr>
 	<h2>Supplementary Agenda:</h2>
-	<ul>
+		<ul>
 		{% for agenda in doc.supplementary_agenda %}
 		<li>
 			{{ agenda.description }}
 		</li>
 		{% endfor %}
+		
 	</ul>
 
 	<hr>
 	<h2>Agenda By Chairman Permission:</h2>
-	<ul>
+		<ul>
 		{% for agenda in doc.by_chairman_permisssion %}
 		<li>
 			{{ agenda.description }}
