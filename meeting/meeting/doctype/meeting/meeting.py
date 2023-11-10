@@ -44,7 +44,7 @@ class Meeting(WebsiteGenerator):
 
 
 
-	def get_unique_name(self, title, meeting_number):
+	def get_unique_name(self, title):
 		# Get the base name from the title
 		base_name = title.replace(' ', '_')
 		# Find a unique name by appending a counter
