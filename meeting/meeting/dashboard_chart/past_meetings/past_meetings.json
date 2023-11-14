@@ -1,0 +1,39 @@
+{
+ "based_on": "creation",
+ "chart_name": "Past Meetings",
+ "chart_type": "Count",
+ "color": "#30b383",
+ "creation": "2023-11-14 19:03:02.806717",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "document_type": "Meeting",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[]",
+ "group_by_type": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "modified": "2023-11-14 19:03:02.806717",
+ "modified_by": "Administrator",
+ "module": "Meeting",
+ "name": "Past Meetings",
+ "number_of_groups": 0,
+ "owner": "Administrator",
+ "parent_document_type": "",
+ "roles": [
+  {
+   "role": "Meeting Attendee"
+  },
+  {
+   "role": "Meeting Manager"
+  }
+ ],
+ "source": "",
+ "time_interval": "Daily",
+ "timeseries": 1,
+ "timespan": "Last Month",
+ "type": "Bar",
+ "use_report_chart": 0,
+ "value_based_on": "",
+ "y_axis": []
+}
