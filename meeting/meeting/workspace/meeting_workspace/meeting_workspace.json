@@ -1,0 +1,61 @@
+{
+ "charts": [
+  {
+   "chart_name": "Past Meetings",
+   "label": "Meetings Statistics"
+  }
+ ],
+ "content": "[{\"id\":\"_oJKzwMBwO\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Meeting Workspace</span>\",\"col\":12}},{\"id\":\"AhFTCpvP97\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ZiZEOATGwn\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Meetings List\",\"col\":6}},{\"id\":\"Wvgmu46IIE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"View Website\",\"col\":3}},{\"id\":\"EG2hIFltBT\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"sgHktZFCHH\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total No. Of Meetings\",\"col\":4}},{\"id\":\"Fh5cbHZBrq\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Meetings Statistics\",\"col\":12}}]",
+ "creation": "2023-11-14 19:09:31.432422",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "share",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Meeting Workspace",
+ "links": [],
+ "modified": "2023-11-14 19:46:42.619116",
+ "modified_by": "Administrator",
+ "module": "Meeting",
+ "name": "Meeting Workspace",
+ "number_cards": [
+  {
+   "label": "Total No. Of Meetings",
+   "number_card_name": "No. Of Meetings"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [
+  {
+   "document_type": "Meeting",
+   "label": "Meetings List"
+  }
+ ],
+ "roles": [
+  {
+   "role": "Meeting Attendee"
+  },
+  {
+   "role": "Meeting Manager"
+  },
+  {
+   "role": "Administrator"
+  }
+ ],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "View Website",
+   "type": "URL",
+   "url": "http://127.0.0.1:8000/meetings"
+  }
+ ],
+ "title": "Meeting Workspace"
+}
