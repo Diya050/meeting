@@ -106,8 +106,7 @@ def start_meeting_message(meeting):
 
     if meeting.status == "Invitation Sent":
         current_time = now_datetime()
-        meeting_from_time = get_datetime(str(meeting.date) + ' ' + str(meeting.from_time + ':00'))
-
+        meeting_from_time = get_datetime(str(meeting.date) + ' ' + str(meeting.from_time))  # Convert to str
 
         if current_time > meeting_from_time:
             delay_seconds = (current_time - meeting_from_time).seconds
@@ -159,14 +158,14 @@ def get_meetings(start, end):
 		"end": end
 	}, as_dict=True)
 
-"""def make_orientation_meeting(doc, method):
-	//Create an orientation meeting when a new User is added
+def make_orientation_meeting(doc, method):
+	"""Create an orientation meeting when a new User is added"""
 	meeting = frappe.get_doc({
 		"doctype": "Meeting",
 		"title": "Orientation for {0}".format(doc.first_name),
 		"date": add_days(nowdate(), 1),
-		"from_time": "09:00:00",
-		"to_time": "09:30:00",
+		"from_time": "09:00",
+		"to_time": "09:30",
 		"status": "Planned",
 		"attendees": [{
 			"attendee": doc.name
@@ -179,7 +178,7 @@ def get_meetings(start, end):
 	frappe.msgprint(_("Orientation meeting created"))
 
 def update_minute_status(doc, method=None):
-	//Update minute status to Closed if ToDo is closed or deleted
+	"""Update minute status to Closed if ToDo is closed or deleted"""
 	if doc.reference_type != "Meeting" or doc.flags.from_meeting:
 		return
 
@@ -190,7 +189,7 @@ def update_minute_status(doc, method=None):
 				minute.db_set("todo", None, update_modified=False)
 				minute.db_set("status", "Closed", update_modified=False)
 				
-"""
+
 """
 @frappe.whitelist()
 def send_minutes(meeting):
