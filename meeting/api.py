@@ -44,24 +44,36 @@ def end_meeting_message(meeting):
     meeting = frappe.get_doc("Meeting", meeting)
 
     if meeting.status == "In Progress":
-        message = "Meeting has ended."
+        try:
+            message = "Meeting has ended."
 
-        for attendee in meeting.attendees:
-            frappe.publish_realtime(event="meeting_ended", message=message, user=attendee.attendee)
-            
-        for attendee in meeting.attendees:
-            frappe.sendmail(
-                recipients=[attendee.attendee],
-                sender=frappe.session.user,
-                subject="Meeting Ended: " + meeting.title,
-                message=message
-            )
+            for attendee in meeting.attendees:
+                frappe.publish_realtime(event="meeting_ended", message=message, user=attendee.attendee)
 
-        meeting.status = "Completed"
-        meeting.save()
-        frappe.msgprint(_("Meeting Status updated to 'Completed'"))
+            for attendee in meeting.attendees:
+                frappe.sendmail(
+                    recipients=[attendee.attendee],
+                    sender=frappe.session.user,
+                    subject="Meeting Ended: " + meeting.title,
+                    message=message
+                )
+
+            print("Before Status Update:", meeting.status)  # Add this line
+
+            meeting.status = "Completed"
+            meeting.save()
+            frappe.db.commit()
+            print("Commit Successful")
+
+
+            print("After Status Update:", meeting.status)  # Add this line
+
+            frappe.msgprint(_("Meeting Status updated to 'Completed'"))
+        except Exception as e:
+            frappe.msgprint(_("Error updating meeting status: {0}".format(str(e))))
     else:
         frappe.msgprint(_("Meeting Status must be 'In Progress' to end the meeting"))
+
 
 	
 @frappe.whitelist()
@@ -157,9 +169,9 @@ def get_meetings(start, end):
 		"start": start,
 		"end": end
 	}, as_dict=True)
-
+"""
 def make_orientation_meeting(doc, method):
-	"""Create an orientation meeting when a new User is added"""
+	# Create an orientation meeting when a new User is added
 	meeting = frappe.get_doc({
 		"doctype": "Meeting",
 		"title": "Orientation for {0}".format(doc.first_name),
@@ -176,9 +188,10 @@ def make_orientation_meeting(doc, method):
 	meeting.insert()
 
 	frappe.msgprint(_("Orientation meeting created"))
-
+"""
+"""
 def update_minute_status(doc, method=None):
-	"""Update minute status to Closed if ToDo is closed or deleted"""
+	# Update minute status to Closed if ToDo is closed or deleted
 	if doc.reference_type != "Meeting" or doc.flags.from_meeting:
 		return
 
@@ -189,7 +202,7 @@ def update_minute_status(doc, method=None):
 				minute.db_set("todo", None, update_modified=False)
 				minute.db_set("status", "Closed", update_modified=False)
 				
-
+"""
 """
 @frappe.whitelist()
 def send_minutes(meeting):
