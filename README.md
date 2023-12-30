@@ -27,6 +27,8 @@ Are your meetings feeling mundane and unproductive? Say hello to a game-changer 
 - **Easy Installation:** Setting up the Meeting App is a breeze with clear installation instructions.
 
 - **User Management:** Admins can create and manage users, granting specific roles and permissions as needed.
+  
+- **Integrated Meeting Workspace with Direct Access:** The Meeting Workspace seamlessly integrates direct access to the Meeting List, website, and graphical representation of conducted meetings, streamlining navigation and enhancing user experience.
 
 - **Meeting Creation:** Create and schedule meetings effortlessly, including setting agendas and invitation messages.
 
@@ -51,6 +53,10 @@ Are your meetings feeling mundane and unproductive? Say hello to a game-changer 
 - **User-friendly Interface:** The app offers an intuitive interface that is easy to navigate for both administrators and attendees.
 
 - **Flexibility:** The ability to add supplementary agendas and permissions enhances the app's flexibility to accommodate different meeting scenarios.
+
+- **Generate PDF:** Allow users, especially administrators and meeting managers, to generate PDF documents from meeting minutes.
+
+- **Smart Tagging for Recurring Events:** Automatically adds dynamic tags to distinguish different instances of recurring meetings, enhancing organization and clarity.
 
 
 ## Getting Started
