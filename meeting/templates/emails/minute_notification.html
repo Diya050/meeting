@@ -20,25 +20,71 @@
     </style>
 </head>
 <body>
+{% if agenda %}
     <h1>Meeting Minutes: {{ meeting_title }}</h1>
     <table>
         <tr>
-            <th>Description</th>
-            <th>Action</th>
-            <th>Status</th>
+            <th>Agenda</th>
+            <th>Meeting Minute</th>
+            <th>Action Taken</th>
             <th>Assigned To</th>
-            <th>Complete By</th>
+            <th>Due Date</th>
         </tr>
-        {% for minute in minutes_list %}
+        {% for each in agenda %}
         <tr>
-            <td>{{ minute.description }}</td>
-            <td>{{ minute.action }}</td>
-            <td>{{ minute.status }}</td>
-            <td>{{ minute.assigned_to }}</td>
-            <td>{{ minute.complete_by }}</td>
+            <td>{{ each.description }}</td>
+            <td>{{ each.minute }}</td>
+            <td>{{ each.action }}</td>
+            <td>{{ each.assigned_to }}</td>
+            <td>{{ each.completed_by }}</td>
         </tr>
         {% endfor %}
     </table>
+{% endif %}
+<br><br>
+<br><br>
+{% if supplementary_agenda %}
+    <table>
+        <tr>
+            <th>Supplementary Agenda</th>
+            <th>Meeting Minute</th>
+            <th>Action Taken</th>
+            <th>Assigned To</th>
+            <th>Due Date</th>
+        </tr>
+        {% for each in supplementary_agenda %}
+        <tr>
+            <td>{{ each.description }}</td>
+            <td>{{ each.minute }}</td>
+            <td>{{ each.action }}</td>
+            <td>{{ each.assigned_to }}</td>
+            <td>{{ each.completed_by }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+<br><br>
+<br><br>
+{% if by_chairman_permission %}
+    <table>
+        <tr>
+            <th>Agenda By Chairman Permission</th>
+            <th>Meeting Minute</th>
+            <th>Action Taken</th>
+            <th>Assigned To</th>
+            <th>Due Date</th>
+        </tr>
+        {% for each in by_chairman_permission %}
+        <tr>
+            <td>{{ each.description }}</td>
+            <td>{{ each.minute }}</td>
+            <td>{{ each.action }}</td>
+            <td>{{ each.assigned_to }}</td>
+            <td>{{ each.completed_by }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
 </body>
 </html>
 

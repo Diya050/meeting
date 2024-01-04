@@ -1,3 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meeting Minutes: {{ meeting_title }}</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
 <p>
 <span class="label label-default"> {{ sender }}</span> Inviting you for a Meeting
 </p>
@@ -15,21 +37,33 @@
 
 {% if agenda %}
 <h4>Meeting Agenda</h4>
+    <table>
 {% for each in agenda %}
-    <li>{{ each.description }}</li>
+    <tr>
+            <td>{{ each.description }}</td>
+    </tr>
 {% endfor %}
+        </table>
 {% endif %}
 
 {% if supplementary_agenda %}
 <h4>Meeting Supplementary Agenda</h4>
+    <table>
 {% for each in supplementary_agenda %}
-    <li>{{ each.description }}</li>
+<tr>
+            <td>{{ each.description }}</td>
+    </tr>
 {% endfor %}
+        </table>
 {% endif %}
 
 {% if by_chairman_permission %}
 <h4>Agenda By Chairman Permission</h4>
+    <table>
 {% for each in by_chairman_permission %}
-    <li>{{ each.description }}</li>
+<tr>
+            <td>{{ each.description }}</td>
+    </tr>
 {% endfor %}
+        </table>
 {% endif %}

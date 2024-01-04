@@ -26,7 +26,7 @@ def send_invitation_emails(meeting):
 				frappe.sendmail(
 				recipients=[d.attendee for d in meeting.attendees],
 				sender=frappe.session.user,
-				subject="New Meeting:" + meeting.title,
+				subject="New Meeting: " + meeting.title,
 				message=message,
 				reference_doctype=meeting.doctype,
 				reference_name=meeting.name,
@@ -68,12 +68,12 @@ def send_minutes(meeting):
 	sender_fullname = get_fullname(frappe.session.user)
 
 	if meeting.status == "Completed":
-		if meeting.minutes:
+		if meeting.agenda:
 			# Prepare a message with a table containing all meeting minutes
 			message = frappe.get_template("templates/emails/minute_notification.html").render({
 				"sender": sender_fullname,
 				"meeting_title": meeting.title,
-				"minutes_list": meeting.minutes,
+				"minutes_list": meeting.agenda,
 			})
 
 			# Get a list of all attendees

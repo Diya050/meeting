@@ -21,6 +21,7 @@
   "duration",
   "agenda_section",
   "agenda",
+  "send_minutes",
   "supplementary_agenda_section",
   "supplementary_agenda",
   "by_chairman_permission_section",
@@ -29,11 +30,7 @@
   "attendees",
   "invitation_section",
   "invitation_message",
-  "send_emails",
-  "minutes_section",
-  "minutes",
-  "minutes_common",
-  "send_minutes"
+  "send_emails"
  ],
  "fields": [
   {
@@ -82,12 +79,12 @@
    "collapsible_depends_on": "agenda",
    "fieldname": "agenda_section",
    "fieldtype": "Section Break",
-   "label": "Agenda"
+   "label": "Agenda and Minutes"
   },
   {
    "fieldname": "agenda",
    "fieldtype": "Table",
-   "label": "Agenda",
+   "label": "Agenda and Minutes",
    "options": "Meeting Agenda"
   },
   {
@@ -119,25 +116,6 @@
    "fieldname": "send_emails",
    "fieldtype": "Button",
    "label": "Send Emails"
-  },
-  {
-   "collapsible": 1,
-   "collapsible_depends_on": "minutes",
-   "fieldname": "minutes_section",
-   "fieldtype": "Section Break",
-   "label": "Minutes"
-  },
-  {
-   "fieldname": "minutes",
-   "fieldtype": "Table",
-   "label": "Minutes",
-   "options": "Meeting Minute"
-  },
-  {
-   "fieldname": "minutes_common",
-   "fieldtype": "Text Editor",
-   "hidden": 1,
-   "label": "Minutes"
   },
   {
    "depends_on": "eval:doc.status === \"Completed\"",
@@ -206,7 +184,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-10 12:55:17.868526",
+ "modified": "2024-01-04 19:23:13.528213",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",

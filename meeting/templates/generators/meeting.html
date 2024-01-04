@@ -53,39 +53,67 @@
 	<div class="col">
 	<pre>    </pre>
 	<hr>
-	<h2>Agenda:</h2>
+	<h2>Agenda and minutes:</h2>
 	
-		
-		<ul>
-		{% for agenda in doc.agenda %}
-		<li>
-			{{ agenda.description }}
-		</li>
-		{% endfor %}
-	</ul>
+	<table style="border-collapse: collapse; width: 100%; margin-top: 20px;">
+    <tr>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Meeting Agenda</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Meeting Minute</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Action Taken</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Assigned To</th>
+    </tr>
+    {% for each in agenda %}
+    <tr>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.description }}</td>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.minute }}</td>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.action }}</td>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.assigned_to }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
 
 	<hr>
 	<h2>Supplementary Agenda:</h2>
-		<ul>
-		{% for agenda in doc.supplementary_agenda %}
-		<li>
-			{{ agenda.description }}
-		</li>
-		{% endfor %}
-		
-	</ul>
+	<table style="border-collapse: collapse; width: 100%; margin-top: 20px;">
+    <tr>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Supplementary Agenda</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Meeting Minute</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Action Taken</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Assigned To</th>
+    </tr>
+    {% for each in supplementary_agenda %}
+    <tr>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.description }}</td>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.minute }}</td>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.action }}</td>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.assigned_to }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 	<hr>
 	<h2>Agenda By Chairman Permission:</h2>
-		<ul>
-		{% for agenda in doc.by_chairman_permisssion %}
-		<li>
-			{{ agenda.description }}
-		</li>
-		{% endfor %}
-	</ul>
+	<table style="border-collapse: collapse; width: 100%; margin-top: 20px;">
+    <tr>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Agenda By Chairman Permission</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Meeting Minute</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Action Taken</th>
+        <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Assigned To</th>
+    </tr>
+    
+    {% for each in by_chairman_permission %}
+    <tr>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.description }}</td>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.minute }}</td>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.action }}</td>
+        <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">{{ each.assigned_to }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
-	<hr>
+<hr>
 	<h2>Attendees:</h2>
 	<ul>
 		{% for attendee in doc.attendees %}
@@ -93,22 +121,6 @@
 			{{ attendee.full_name }} {% if attendee.accepted %} <i class="icon icon-ok"></i> {% endif %}
 		</li>
 		{% endfor %}
-	</ul>
-
-	<hr>
-	<h2>Minutes:</h2>
-	<ul>
-   {% set processed_actions = [] %}
-   {% for minute in doc.minutes %}
-      {% if minute.action not in processed_actions %}
-         <li>
-            <label><b>Action: </b></label> {{ minute.action }}<br>
-            <label><b>Assigned To:</b></label> {{ minute.assigned_to }}<br>
-            <label><b>Description:</b></label> {{ minute.description }}<br>
-         </li>
-         {% set _ = processed_actions.append(minute.action) %}
-      {% endif %}
-   {% endfor %}
 </ul>
 
 </div>
