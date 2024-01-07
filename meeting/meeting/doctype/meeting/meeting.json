@@ -9,6 +9,7 @@
  "field_order": [
   "title",
   "meeting_number",
+  "venue",
   "status",
   "show_in_website",
   "route",
@@ -76,7 +77,7 @@
   },
   {
    "collapsible": 1,
-   "collapsible_depends_on": "agenda",
+   "collapsible_depends_on": "agenda;",
    "fieldname": "agenda_section",
    "fieldtype": "Section Break",
    "label": "Agenda and Minutes"
@@ -107,6 +108,7 @@
    "label": "Invitation"
   },
   {
+   "default": "Respected [Recipient\\'s Name],<br><br>I trust this message finds you well. It is with great pleasure that I extend an invitation to you for our upcoming meeting on [Meeting Subject/Topic]. Your presence and insights will be highly valued.<br><br>Kindly come prepared with any relevant updates or materials related to the agenda items. In the event that you are unable to attend, please notify me at your earliest convenience.<br><br>Your participation is crucial, and I anticipate a productive discussion during our meeting.<br><br>Yours sincerely,<br><br>[Your Full Name]<br>[Your Position]<br>[Your Contact Information]",
    "fieldname": "invitation_message",
    "fieldtype": "Text Editor",
    "label": "Invitation Message"
@@ -180,11 +182,17 @@
    "hidden": 1,
    "label": "Meeting Number",
    "read_only": 1
+  },
+  {
+   "fieldname": "venue",
+   "fieldtype": "Data",
+   "label": "Venue",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-04 19:23:13.528213",
+ "modified": "2024-01-07 19:22:47.852123",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",

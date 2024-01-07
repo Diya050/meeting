@@ -22,30 +22,37 @@
   {
    "fieldname": "minute",
    "fieldtype": "Text Editor",
+   "in_list_view": 1,
    "label": "Meeting Minute"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "action",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Action Taken",
    "options": "Pending\nAccepted\nRejected\nAccepted With Amendments"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "assigned_to",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Assigned To",
    "options": "User"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "completed_by",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Due Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-01-04 20:25:11.352649",
+ "modified": "2024-01-05 19:49:23.503003",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting Agenda",
