@@ -13,16 +13,16 @@
 	<blockquote
 	style="border-left: 3px solid #d1d8dd; padding: 7px 15px; margin-left: 0px;">
 		<li>
-			<label>Date:</label> {{ doc.get_formatted("date") }}
+			<label><b>From:</b></label> {{ doc.get_formatted("start_datetime") }}
 		</li>
 		<li>
-			<label>Time:</label> {{ doc.get_formatted("from_time") }} to {{ doc.get_formatted("to_time") }}
+			<label><b>To:</b></label> {{ doc.get_formatted("end_datetime") }}
 		</li>
 		<li>
-			<label>Venue:</label> {{ doc.get_formatted("venue") }}
+			<label><b>Venue:</b></label> {{ doc.get_formatted("venue") }}
 		</li>
 		<li>
-			<label>Status: </label> {{ doc.status }}
+			<label><b>Status: </b></label> {{ doc.status }}
 		</li>
 	</blockquote>
 	</ul>

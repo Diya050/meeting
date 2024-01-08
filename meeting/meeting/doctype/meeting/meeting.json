@@ -16,9 +16,8 @@
   "start_meeting",
   "end_meeting",
   "column_break_sfmdw",
-  "date",
-  "from_time",
-  "to_time",
+  "start_datetime",
+  "end_datetime",
   "duration",
   "agenda_section",
   "agenda",
@@ -42,6 +41,7 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Status",
    "options": "Planned\nInvitation Sent\nIn Progress\nCompleted\nMinutes Sent\nCancelled",
    "reqd": 1
@@ -56,24 +56,6 @@
   {
    "fieldname": "column_break_sfmdw",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "from_time",
-   "fieldtype": "Time",
-   "label": "From Time",
-   "reqd": 1
-  },
-  {
-   "fieldname": "to_time",
-   "fieldtype": "Time",
-   "label": "To Time"
   },
   {
    "collapsible": 1,
@@ -186,13 +168,27 @@
   {
    "fieldname": "venue",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Venue",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_datetime",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Start Datetime",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_datetime",
+   "fieldtype": "Datetime",
+   "label": "End Datetime",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-07 19:22:47.852123",
+ "modified": "2024-01-07 19:49:35.124604",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",

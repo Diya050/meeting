@@ -8,6 +8,8 @@ from frappe.model.document import Document
 from frappe.website.website_generator import WebsiteGenerator
 from datetime import datetime,date
 from frappe.utils import get_time
+from datetime import datetime, timedelta
+
 class Meeting(WebsiteGenerator):
 	website = frappe._dict(
 		template = "templates/generators/meeting.html"
@@ -55,38 +57,46 @@ class Meeting(WebsiteGenerator):
 		else:	
 			return self.name, self.title
   
+
+
 	def before_save(self):
-		# Calculate the duration if both from_time and to_time are set
-		if self.from_time and self.to_time:
-			self.from_time = str(self.from_time)  # Convert to string
-			self.to_time = str(self.to_time) 
-			from_time = datetime.strptime(self.from_time, "%H:%M:%S")
-			to_time = datetime.strptime(self.to_time, "%H:%M:%S")
+		# Calculate the duration if both start_datetime and end_datetime are set
+		if self.start_datetime and self.end_datetime:
+			start_datetime = datetime.strptime(self.start_datetime, '%Y-%m-%d %H:%M:%S')
+			end_datetime = datetime.strptime(self.end_datetime, '%Y-%m-%d %H:%M:%S')
+
 			# Calculate the duration in minutes
-			duration_hours = (to_time - from_time).total_seconds() 
+			duration_minutes = (end_datetime - start_datetime).total_seconds()
+
 			# Format the duration with two decimal places
-			formatted_duration = "{:.2f}".format(duration_hours)
+			formatted_duration = "{:.2f}".format(duration_minutes)
+
 			# Set the formatted duration in the document's field
-			self.duration = formatted_duration	
+			self.duration = formatted_duration
+
+
+	
 		
 		
 	def validate_time(self):
-		if self.from_time > self.to_time:
-			frappe.throw(_("From Time must be earlier than To Time."))
+		if self.start_datetime and self.end_datetime and self.start_datetime >= self.end_datetime:
+			frappe.throw(_("Start time must be earlier than end time."))
+
+
 
 	def check_for_conflicting_meetings(self):
 		# Check for other meetings on the same date and time
 		conflicting_meetings = frappe.get_all("Meeting",
 		filters={
-			"date": self.date,
-			"from_time": (">=", self.from_time),
-			"to_time": ("<=", self.to_time),
+			"start_datetime": ("between", [self.start_datetime, self.end_datetime]),
 			"name": ("!=", self.name),  # Exclude the current meeting
 		},
 		fields=["name"]
 		)
+    
 		if conflicting_meetings:
-			frappe.throw(_("There is a conflicting meeting scheduled for the same time on the same day. Please choose a different date or time."))
+			frappe.throw(_("There is a conflicting meeting scheduled for the same time. Please choose a different date or time."))
+
 
 	"""
 	def on_update(self):
