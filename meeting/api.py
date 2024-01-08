@@ -43,7 +43,7 @@ def send_invitation_emails(meeting):
 def end_meeting_message(meeting):
     meeting = frappe.get_doc("Meeting", meeting)
     if meeting.status == "In Progress":
-        message = "Meeting has ended."
+        message = "Ladies and Gentlemen, as we conclude today's meeting, I want to express gratitude to those who actively participated. For those who couldn't make it, we missed your presence and contributions. If you have any questions or need a recap, please feel free to connect with us. Thank you for your understanding."
         for attendee in meeting.attendees:
             frappe.publish_realtime(event="meeting_ended", message=message, user=attendee.attendee)
             
@@ -110,12 +110,12 @@ def start_meeting_message(meeting):
             delay_seconds = (current_time - meeting_from_time).seconds
 
             if -120 <= delay_seconds <= 300:  # Tolerance window: -2 minutes to 5 minutes
-                message = "Meeting is starting on time."
+                message = "Ladies and Gentlemen, I am pleased to announce the commencement of our meeting, which is on time. Your presence is requested in the meeting room, and we anticipate your active involvement in the proceedings. Thank you for your attention and cooperation."
             else:
                 delay_minutes = delay_seconds / 60
-                message = f"The meeting is starting {delay_minutes:.1f} minutes late. Meeting has started."
+                message = f"Ladies and Gentlemen, I am pleased to announce the commencement of our meeting, which is starting after a delay of {delay_minutes:.1f}. Your presence is requested in the meeting room, and we anticipate your active involvement in the proceedings. Thank you for your patience and cooperation."
         else:
-            message = "Meeting has started."
+            message = "Ladies and Gentlemen, I am pleased to announce the commencement of our meeting, which is on time. Your presence is requested in the meeting room, and we anticipate your active involvement in the proceedings. Thank you for your attention and cooperation."
 
         for attendee in meeting.attendees:
             frappe.publish_realtime(event="meeting_started", message=message, user=attendee.attendee)

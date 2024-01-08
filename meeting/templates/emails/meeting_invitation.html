@@ -28,12 +28,12 @@
         To: {{ end_datetime  }}<br>
         Venue: {{ venue }}
     </blockquote>
-
+<br>
 {% if invitation_message %}
 <h3>Invitation Message</h3>
 <p>{{ invitation_message or '' }}</p>
 {% endif %}
-
+<br>
 {% if agenda %}
 <h4>Meeting Agenda</h4>
     <table>
@@ -44,7 +44,7 @@
 {% endfor %}
         </table>
 {% endif %}
-
+<br>
 {% if supplementary_agenda %}
 <h4>Meeting Supplementary Agenda</h4>
     <table>
@@ -55,7 +55,7 @@
 {% endfor %}
         </table>
 {% endif %}
-
+<br>
 {% if by_chairman_permission %}
 <h4>Agenda By Chairman Permission</h4>
     <table>
