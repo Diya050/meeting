@@ -1,4 +1,5 @@
 from . import __version__ as app_version
+from frappe import _
 
 app_name = "meeting"
 app_title = "Meeting"
@@ -135,6 +136,19 @@ website_generators = ["Meeting"]
 #		"on_trash": "method"
 #	}
 # }
+
+# meeting/hooks.py
+
+
+
+def get_context(context):
+    context.no_cache = 1
+
+# Additional hooks configuration...
+
+# Whitelist the new route
+guest_methods = ['meeting.meeting.doctype.meeting.meeting.check_user_login']
+
 
 # Scheduled Tasks
 # ---------------

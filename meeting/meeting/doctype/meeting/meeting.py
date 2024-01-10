@@ -9,6 +9,8 @@ from frappe.website.website_generator import WebsiteGenerator
 from datetime import datetime,date
 from frappe.utils import get_time
 from datetime import datetime, timedelta
+from frappe import Redirect
+
 
 class Meeting(WebsiteGenerator):
 	website = frappe._dict(
@@ -59,19 +61,42 @@ class Meeting(WebsiteGenerator):
   
 
 
+	def get_context(self, context):
+		# Check if the user is logged in
+		if frappe.session.user:
+			# Check if the user has the required permission to view the meeting
+			if self.has_permission("read"):
+		                # If the user is logged in and has permission, set the context for the template
+				context.show_meeting = True
+				context.meeting_data = {
+					"title": self.title,
+					"start_datetime": self.start_datetime,
+					"end_datetime": self.end_datetime,
+				}
+			else:
+				# If the user doesn't have permission, set a flag to hide the meeting content
+				context.show_meeting = False
+		else:
+			# If the user is not logged in, redirect them to the login page
+			frappe.local.flags.redirect_location = '/login'
+			raise frappe.Redirect
+
+
+	def has_permission(self, ptype="read", user=None):
+		# Check if the user has the required permission
+		return frappe.has_permission(self.doctype, ptype, self, user=user)
+
+
 	def before_save(self):
 		# Calculate the duration if both start_datetime and end_datetime are set
 		if self.start_datetime and self.end_datetime:
 			start_datetime = datetime.strptime(self.start_datetime, '%Y-%m-%d %H:%M:%S')
 			end_datetime = datetime.strptime(self.end_datetime, '%Y-%m-%d %H:%M:%S')
 
-			# Calculate the duration in minutes
 			duration_minutes = (end_datetime - start_datetime).total_seconds()
 
-			# Format the duration with two decimal places
 			formatted_duration = "{:.2f}".format(duration_minutes)
 
-			# Set the formatted duration in the document's field
 			self.duration = formatted_duration
 
 
@@ -81,6 +106,7 @@ class Meeting(WebsiteGenerator):
 	def validate_time(self):
 		if self.start_datetime and self.end_datetime and self.start_datetime >= self.end_datetime:
 			frappe.throw(_("Start time must be earlier than end time."))
+
 
 
 
@@ -155,4 +181,21 @@ def get_full_name(attendee):
 	user = frappe.get_doc("User", attendee)
 	# concatenates by space if it has value
 	return " ".join(filter(None, [user.first_name, user.middle_name, user.last_name]))
+	
+	
+@frappe.whitelist(allow_guest=True)
+def check_user_login():
+	if frappe.session.user:
+		# User is logged in, return your meeting content here
+		meeting_content = get_meeting_content()
+		return frappe._dict(content=meeting_content)
+	else:
+		# User is not logged in, return a response or redirect as needed
+		frappe.respond_as_web_page(_('Login Required'), _('Please log in to access the meeting.'), http_status_code=401)
+
+def get_meeting_content():
+	# Your logic to fetch and return meeting content
+	# For example, you can query the Meeting doctype and return relevant data
+	meetings = frappe.get_list('Meeting', fields=['name', 'title', 'start_datetime'], limit=5)
+	return meetings
 	

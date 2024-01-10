@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="col" id="meeting-content">
+<div class="col">
 	
 	<h1>{{ title }}</h1>
 	</div>
@@ -127,31 +127,4 @@
 </ul>
 
 </div>
-
-<script>
-frappe.ready(function() {
-    frappe.call({
-        method: 'meeting.meeting.doctype.meeting.meeting.check_user_login',
-        callback: function(r) {
-            if (r.message && r.message.content) {
-                // User is logged in, load the meeting content
-                displayMeetingContent(r.message.content);
-            }
-        }
-    });
-});
-
-function displayMeetingContent(content) {
-    // Your logic to render the meeting content
-    // For example, you can use JavaScript to dynamically update the DOM
-    console.log(content);
-    // Example: render a list of meetings
-    var meetingsList = '<ul>';
-    content.forEach(function(meeting) {
-        meetingsList += '<li>' + meeting.title + ' - ' + meeting.start_datetime + '</li>';
-    });
-    meetingsList += '</ul>';
-    $('#meeting-content').html(meetingsList);
-}
-</script>
 {% endblock %}
