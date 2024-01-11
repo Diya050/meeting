@@ -4,6 +4,8 @@ from frappe.utils import get_fullname, get_link_to_form
 from frappe.utils import nowdate, add_days
 from frappe.utils import get_datetime, now_datetime
 from datetime import datetime, timedelta
+from frappe.utils import format_datetime
+
 
 
 @frappe.whitelist()
@@ -97,43 +99,43 @@ def send_minutes(meeting):
 		frappe.msgprint(_("Meeting Status must be 'Completed'"))
 
 
-
 @frappe.whitelist()
 def start_meeting_message(meeting):
-    meeting = frappe.get_doc("Meeting", meeting)
+	meeting = frappe.get_doc("Meeting", meeting)
 
-    if meeting.status == "Invitation Sent":
-        current_time = now_datetime()
-        meeting_from_time = get_datetime(str(meeting.date) + ' ' + str(meeting.from_time))  # Convert to str
+	if meeting.status == "Invitation Sent":
+		current_time = now_datetime()
+		meeting_from_time = meeting.start_datetime  # Use it directly
 
-        if current_time > meeting_from_time:
-            delay_seconds = (current_time - meeting_from_time).seconds
+		if current_time > meeting_from_time:
+			delay_seconds = (current_time - meeting_from_time).seconds
 
-            if -120 <= delay_seconds <= 300:  # Tolerance window: -2 minutes to 5 minutes
-                message = "Ladies and Gentlemen, I am pleased to announce the commencement of our meeting, which is on time. Your presence is requested in the meeting room, and we anticipate your active involvement in the proceedings. Thank you for your attention and cooperation."
-            else:
-                delay_minutes = delay_seconds / 60
-                message = f"Ladies and Gentlemen, I am pleased to announce the commencement of our meeting, which is starting after a delay of {delay_minutes:.1f}. Your presence is requested in the meeting room, and we anticipate your active involvement in the proceedings. Thank you for your patience and cooperation."
-        else:
-            message = "Ladies and Gentlemen, I am pleased to announce the commencement of our meeting, which is on time. Your presence is requested in the meeting room, and we anticipate your active involvement in the proceedings. Thank you for your attention and cooperation."
+			if -120 <= delay_seconds <= 300:  # Tolerance window: -2 minutes to 5 minutes
+				message = _("Ladies and Gentlemen, I am pleased to announce the commencement of our meeting, which is on time. Your presence is requested in the meeting room, and we anticipate your active involvement in the proceedings. Thank you for your attention and cooperation.")
+			else:
+				delay_minutes = delay_seconds / 60
+				message = _("Ladies and Gentlemen, I am pleased to announce the commencement of our meeting, which is starting after a delay of {0:.1f} minutes. Your presence is requested in the meeting room, and we anticipate your active involvement in the proceedings. Thank you for your patience and cooperation.").format(delay_minutes)
+		else:
+			message = _("Ladies and Gentlemen, I am pleased to announce the commencement of our meeting, which is on time. Your presence is requested in the meeting room, and we anticipate your active involvement in the proceedings. Thank you for your attention and cooperation.")
 
-        for attendee in meeting.attendees:
-            frappe.publish_realtime(event="meeting_started", message=message, user=attendee.attendee)
-            
-        for attendee in meeting.attendees:
-            frappe.sendmail(
-                recipients=[attendee.attendee],
-                sender=frappe.session.user,
-                subject="Meeting Started: " + meeting.title,
-                message=message
-            )
+		for attendee in meeting.attendees:
+			frappe.publish_realtime(event="meeting_started", message=message, user=attendee.attendee)
+
+		for attendee in meeting.attendees:
+			frappe.sendmail(
+				recipients=[attendee.attendee],
+				sender=frappe.session.user,
+				subject=_("Meeting Started: ") + meeting.title,
+				message=message
+		)
+
+		meeting.status = "In Progress"
+		meeting.save()
+		frappe.msgprint(_("Meeting Status updated to 'In Progress'"))
+	else:
+		frappe.msgprint(_("Meeting Status must be 'Invitation Sent' to start the meeting"))
 
 
-        meeting.status = "In Progress"
-        meeting.save()
-        frappe.msgprint(_("Meeting Status updated to 'In Progress'"))
-    else:
-        frappe.msgprint(_("Meeting Status must be 'Invitation Sent' to start the meeting"))
 
     	
     	
@@ -144,17 +146,18 @@ def get_meetings(start, end):
 		raise frappe.PermissionError
 
 	return frappe.db.sql("""select
-		timestamp(`date`, from_time) as start,
-		timestamp(`date`, to_time) as end,
+		timestamp(start_datetime) as start,
+		timestamp(end_datetime) as end,
 		name,
 		title,
 		status,
 		0 as all_day
 	from `tabMeeting`
-	where `date` between %(start)s and %(end)s""", {
+	where start_datetime between %(start)s and %(end)s""", {
 		"start": start,
 		"end": end
 	}, as_dict=True)
+
 """
 def make_orientation_meeting(doc, method):
 	# Create an orientation meeting when a new User is added

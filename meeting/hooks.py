@@ -141,15 +141,6 @@ website_generators = ["Meeting"]
 
 
 
-def get_context(context):
-    context.no_cache = 1
-
-# Additional hooks configuration...
-
-# Whitelist the new route
-guest_methods = ['meeting.meeting.doctype.meeting.meeting.check_user_login']
-
-
 # Scheduled Tasks
 # ---------------
 
