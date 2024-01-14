@@ -88,6 +88,7 @@ class Meeting(WebsiteGenerator):
 
 
 	def before_save(self):
+		self.route = f"meeting/{self.name}"
 		# Calculate the duration if both start_datetime and end_datetime are set
 		if self.start_datetime and self.end_datetime:
 			start_datetime = self.get_datetime_from_str(self.start_datetime)
