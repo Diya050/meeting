@@ -17,7 +17,7 @@
  "is_hidden": 0,
  "label": "Meeting Workspace",
  "links": [],
- "modified": "2024-01-04 19:05:03.301681",
+ "modified": "2024-01-14 22:27:46.636746",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting Workspace",
@@ -54,7 +54,7 @@
    "doc_view": "List",
    "label": "View Website",
    "type": "URL",
-   "url": "http://erp.gndec.ac.in/meetings"
+   "url": "http://erp.gndec.ac.in/meeting"
   }
  ],
  "title": "Meeting Workspace"
