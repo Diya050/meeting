@@ -24,30 +24,34 @@
   {
    "fieldname": "minute",
    "fieldtype": "Text Editor",
+   "in_list_view": 1,
    "label": "Meeting Minute"
   },
   {
    "fieldname": "action",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Action Taken",
-   "options": "Accepted\nRejected\nAccepted With Amendments\nPending"
+   "options": "Pending\nAccepted\nRejected\nAccepted With Amendments"
   },
   {
    "fieldname": "assigned_to",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Assigned To",
    "options": "User"
   },
   {
    "fieldname": "completed_by",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Due Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-01-04 19:16:49.986893",
+ "modified": "2024-01-14 22:17:18.516924",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Agenda By Chairman Permission",

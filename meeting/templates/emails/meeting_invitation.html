@@ -23,10 +23,10 @@
 <p>
 <span class="label label-default"> {{ sender }}</span> Inviting you for a Meeting
 </p>
-    <blockquote>
-        From: {{ start_datetime }}<br>
-        To: {{ end_datetime  }}<br>
-        Venue: {{ venue }}
+    <blockquote style="border-left: 3px solid #d1d8dd; padding: 7px 15px; margin-left: 0px;">
+        <b>Start Date and Time: </b>{{ start_datetime.strftime('%d %B %Y') }} at {{ start_datetime.strftime('%H:%M') }}<br>
+        <b>End Date and Time: </b>{{ end_datetime.strftime('%d %B %Y') }} at {{ end_datetime.strftime('%H:%M') }}<br>
+        <b>Venue: </b>{{ venue }}
     </blockquote>
 <br>
 {% if invitation_message %}

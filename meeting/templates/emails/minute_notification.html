@@ -20,9 +20,10 @@
     </style>
 </head>
 <body>
-{% if agenda %}
+
     <h1>Meeting Minutes: {{ meeting_title }}</h1>
-    <p>These minutes provide a record of discussions, decisions, and actions taken during the meeting held on {{ start_datetime }} at {{ venue }}.</p><br>
+    
+    <p>These minutes provide a record of discussions, decisions, and actions taken during the meeting held on {{ start_datetime.strftime('%d %B %Y') }} at {{ start_datetime.strftime('%H:%M') }}.</p><br>
     <table>
         <tr>
             <th>Agenda</th>
@@ -41,7 +42,6 @@
         </tr>
         {% endfor %}
     </table>
-{% endif %}
 <br><br>
 <br><br>
 {% if supplementary_agenda %}

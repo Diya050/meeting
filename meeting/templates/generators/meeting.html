@@ -13,10 +13,10 @@
 	<blockquote
 	style="border-left: 3px solid #d1d8dd; padding: 7px 15px; margin-left: 0px;">
 		<li>
-			<label><b>From:</b></label> {{ doc.get_formatted("start_datetime") }}
+			<label><b>Start Date and Time: </b></label> {{ start_datetime.strftime('%d %B %Y') }} at {{ start_datetime.strftime('%H:%M') }}
 		</li>
 		<li>
-			<label><b>To:</b></label> {{ doc.get_formatted("end_datetime") }}
+			<label><b>End Date and Time: </b></label> {{ end_datetime.strftime('%d %B %Y') }} at {{ end_datetime.strftime('%H:%M') }}
 		</li>
 		<li>
 			<label><b>Venue:</b></label> {{ doc.get_formatted("venue") }}
