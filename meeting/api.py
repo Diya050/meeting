@@ -19,6 +19,7 @@ def send_invitation_emails(meeting):
 					"sender":sender_fullname,
 					"start_datetime":meeting.start_datetime,
 					"end_datetime":meeting.end_datetime,
+					"venue": meeting.venue,
 					"invitation_message":meeting.invitation_message,
 					"agenda": meeting.agenda,
 					"supplementary_agenda": meeting.supplementary_agenda,
@@ -74,6 +75,9 @@ def send_minutes(meeting):
 			message = frappe.get_template("templates/emails/minute_notification.html").render({
 				"sender": sender_fullname,
 				"meeting_title": meeting.title,
+				"start_datetime":meeting.start_datetime,
+				"end_datetime":meeting.end_datetime,
+				"venue": meeting.venue,
 				"agenda": meeting.agenda,
 				"supplementary_agenda": meeting.supplementary_agenda,
 				"by_chairman_permission": meeting.by_chairman_permission,
