@@ -29,6 +29,7 @@ def send_invitation_emails(meeting):
 					"venue": meeting.venue,
 					"invitation_message": invitation_message,
 					"agenda": meeting.agenda,
+					"route": meeting.route,
 					"supplementary_agenda": meeting.supplementary_agenda,
 					"by_chairman_permission": meeting.by_chairman_permission,
 				})
