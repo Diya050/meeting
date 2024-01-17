@@ -89,7 +89,7 @@
    "label": "Invitation"
   },
   {
-   "default": "Respected [Recipient\\'s Name],<br><br>I trust this message finds you well. It is with great pleasure that I extend an invitation to you for our upcoming meeting on [Meeting Subject/Topic]. Your presence and insights will be highly valued.<br><br>Kindly come prepared with any relevant updates or materials related to the agenda items. In the event that you are unable to attend, please notify me at your earliest convenience.<br><br>Your participation is crucial, and I anticipate a productive discussion during our meeting.<br><br>Yours sincerely,<br><br>[Your Full Name]<br>[Your Position]<br>[Your Contact Information]",
+   "default": "Respected {{ attendee }},<br><br>I trust this message finds you well. It is with great pleasure that I extend an invitation to you for our upcoming meeting on {{ title }}. Your presence and insights will be highly valued.<br><br>Kindly come prepared with any relevant updates or materials related to the agenda items. In the event that you are unable to attend, please notify me at your earliest convenience.<br><br>Your active participation is crucial, and I'm eager to have a productive discussion during our meeting. For real-time updates and to follow the progress of the meeting, please visit: https://erp.gndec.ac.in/{{ route }}<br><br>Yours sincerely,<br><br>{{ sender }}<br>Meeting Manager",
    "fieldname": "invitation_message",
    "fieldtype": "Text Editor",
    "label": "Invitation Message"
@@ -186,7 +186,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "show_in_website",
  "links": [],
- "modified": "2024-01-14 21:39:49.556075",
+ "modified": "2024-01-17 22:23:13.955140",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",
