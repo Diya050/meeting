@@ -17,7 +17,7 @@ def send_invitation_emails(meeting):
 		if meeting.attendees:
 			for attendee in meeting.attendees:
 				invitation_message = frappe.render_template(meeting.invitation_message, {
-					"attendee": attendee.attendee,
+					"attendee": attendee.full_name,
 					"title": meeting.title,
 					"route": meeting.route,
 					"sender": sender_fullname

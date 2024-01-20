@@ -10,6 +10,8 @@ from datetime import datetime,date
 from frappe.utils import get_time
 from datetime import datetime, timedelta
 from frappe import Redirect
+import random
+import string
 
 
 class Meeting(WebsiteGenerator):
@@ -59,8 +61,7 @@ class Meeting(WebsiteGenerator):
 		else:	
 			return self.name, self.title
   
-
-
+    
 	def get_context(self, context):
 		# Check if the user is logged in
 		if frappe.session.user:
@@ -88,7 +89,7 @@ class Meeting(WebsiteGenerator):
 
 
 	def before_save(self):
-		self.route = f"meeting/{self.name}"
+		self.route = f"meeting/{self.committee_name}/{self.name}/{generate_random_string()}"
 		# Calculate the duration if both start_datetime and end_datetime are set
 		if self.start_datetime and self.end_datetime:
 			start_datetime = self.get_datetime_from_str(self.start_datetime)
@@ -120,6 +121,7 @@ class Meeting(WebsiteGenerator):
 		# Check for other meetings on the same date and time
 		conflicting_meetings = frappe.get_all("Meeting",
 		filters={
+			"venue": self.venue,
 			"start_datetime": ("between", [self.start_datetime, self.end_datetime]),
 			"name": ("!=", self.name),  # Exclude the current meeting
 		},
@@ -127,7 +129,7 @@ class Meeting(WebsiteGenerator):
 		)
     
 		if conflicting_meetings:
-			frappe.throw(_("There is a conflicting meeting scheduled for the same time. Please choose a different date or time."))
+			frappe.throw(_("There is a conflicting meeting scheduled for the same time and venue. Please choose a different date or time or venue."))
 
 
 	"""
@@ -189,7 +191,9 @@ def get_full_name(attendee):
 	return " ".join(filter(None, [user.first_name, user.middle_name, user.last_name]))
 	
 
-
+def generate_random_string(length=6):
+	return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
+		
 def get_meeting_content():
 	# Your logic to fetch and return meeting content
 	# For example, you can query the Meeting doctype and return relevant data

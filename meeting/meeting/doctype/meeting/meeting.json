@@ -10,12 +10,13 @@
   "title",
   "meeting_number",
   "venue",
-  "status",
+  "committee_name",
+  "show_in_website",
   "start_meeting",
   "end_meeting",
-  "show_in_website",
   "route",
   "column_break_sfmdw",
+  "status",
   "start_datetime",
   "end_datetime",
   "duration",
@@ -109,7 +110,9 @@
   {
    "fieldname": "route",
    "fieldtype": "Data",
-   "label": "Route"
+   "hidden": 1,
+   "label": "Route",
+   "read_only": 1
   },
   {
    "depends_on": "eval:doc.status === \"Invitation Sent\"",
@@ -126,7 +129,8 @@
   {
    "fieldname": "duration",
    "fieldtype": "Duration",
-   "label": "Meeting Duration"
+   "label": "Meeting Duration",
+   "read_only": 1
   },
   {
    "collapsible": 1,
@@ -163,9 +167,10 @@
   },
   {
    "fieldname": "venue",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Venue",
+   "options": "Meeting Venue",
    "reqd": 1
   },
   {
@@ -180,13 +185,20 @@
    "fieldtype": "Datetime",
    "label": "End Datetime",
    "reqd": 1
+  },
+  {
+   "fieldname": "committee_name",
+   "fieldtype": "Link",
+   "label": "Committee Name",
+   "options": "Committee",
+   "reqd": 1
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "show_in_website",
  "links": [],
- "modified": "2024-01-17 22:23:13.955140",
+ "modified": "2024-01-20 13:05:15.416670",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",
