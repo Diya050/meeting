@@ -29,6 +29,7 @@ def send_invitation_emails(meeting):
 					"end_datetime":meeting.end_datetime,
 					"venue": meeting.venue,
 					"invitation_message": invitation_message,
+					"committee_name": meeting.committee_name,
 					"agenda": meeting.agenda,
 					"route": meeting.route,
 					"supplementary_agenda": meeting.supplementary_agenda,
