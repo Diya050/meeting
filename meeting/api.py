@@ -20,6 +20,7 @@ def send_invitation_emails(meeting):
 					"attendee": attendee.full_name,
 					"title": meeting.title,
 					"route": meeting.route,
+					"committee_name": meeting.committee_name,
 					"sender": sender_fullname
 				})
 				message = frappe.get_template("templates/emails/meeting_invitation.html").render({

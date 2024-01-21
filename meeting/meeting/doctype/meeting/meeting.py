@@ -89,7 +89,8 @@ class Meeting(WebsiteGenerator):
 
 
 	def before_save(self):
-		self.route = f"meeting/{self.committee_name}/{self.name}/{generate_random_string()}"
+		if not self.route:
+			self.route = f"meeting/{self.committee_name}/{self.name}/{generate_random_string()}"
 		# Calculate the duration if both start_datetime and end_datetime are set
 		if self.start_datetime and self.end_datetime:
 			start_datetime = self.get_datetime_from_str(self.start_datetime)
