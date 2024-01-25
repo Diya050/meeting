@@ -47,6 +47,7 @@ This section will guide you through the initial setup and help you get started w
 
 
 - This will open a dashboard. Fill the Meeting Title, choose a Venue, Committee Name, meeting status is planned(by default and will change automatically according to the meeting's progress), check `Show in website` (so that it is viewed to all the attendees through website), set start date and time, and end date and time(Duration will be calculated automatically), set Agenda, and edit Invitation Message(if required). Save all these changes.
+
   
 ![image](https://github.com/Diya050/meeting/assets/124448340/ef0be91c-8af6-4d3c-9385-c103d662413d)
 
@@ -56,6 +57,7 @@ This section will guide you through the initial setup and help you get started w
 
 
 `Note:` Kindly, do not do any changes to content inside {{ }} in invitation message.
+
 
 - You could see your Meeting Progress on website, by clicking on `See on website` in the panel on the left side. This website link would be shared with all your attendees through the invitation message, so that they could trace the progress of meeting. If you uncheck `Show in website`, your meeting details would be removed from website.
   
@@ -87,6 +89,7 @@ This section will guide you through the initial setup and help you get started w
 - Here's a view of your invitation email in your attendees' inbox:
 
 ![image](https://github.com/Diya050/meeting/assets/124448340/91dfea11-0ddf-40c1-83cb-becbb4bcf7fe)
+
 ![image](https://github.com/Diya050/meeting/assets/124448340/567f577a-f64e-478a-ad53-12ce26e6d29c)
 
 
@@ -102,7 +105,11 @@ This section will guide you through the initial setup and help you get started w
 ![image](https://github.com/Diya050/meeting/assets/124448340/bd575709-c428-48f0-b08b-eb592d75dd13)
 
 
-- While the meeting is `In Progress`, you can mark attendance of attendees(by checking boxes in Attendee Section) and you can type the minutes in the `Minutes Section` but you could send them only after the meeting is completed. You can add minute description, choose the corresponding action taken, mention Assigned to (some attendee if any) and set date i.e Completed by.
+- While the meeting is `In Progress`, you can mark attendance of attendees(by checking boxes in Attendee Section) and you can type the minutes in the `Minutes Section` but you could send them only after the meeting is completed.
+
+  ![image](https://github.com/Diya050/meeting/assets/124448340/6bd3bc9d-e7f3-434f-9f4a-cce9b73dda77)
+
+- You can add minute description, choose the corresponding action taken, mention Assigned to (some attendee if any) and set date i.e Completed by.
 
 ![image](https://github.com/Diya050/meeting/assets/124448340/f382f3cc-48ab-4a64-9aa0-a5c1d52037b8)
 
@@ -138,5 +145,6 @@ This section will guide you through the initial setup and help you get started w
 - If you create a meeting of same name it will automatically add suitable suffix to it's name.
 
 - It generates unique route for each meeting, thus enhacing privacy. Also, meetings created by a particular user could be viewed by him/her only on the desk. But adm,inistrator could view all the meetings.
+
   
 > To clinch it all, the Meeting App powered by the Frappe Framework is your go-to solution for revolutionizing the way you manage and conduct meetings. This comprehensive documentation has provided you with a step-by-step guide on how to install, set up, and make the most of this powerful tool.
