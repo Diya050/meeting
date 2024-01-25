@@ -89,7 +89,6 @@ This section will guide you through the initial setup and help you get started w
 - Here's a view of your invitation email in your attendees' inbox:
 
 ![image](https://github.com/Diya050/meeting/assets/124448340/91dfea11-0ddf-40c1-83cb-becbb4bcf7fe)
-
 ![image](https://github.com/Diya050/meeting/assets/124448340/567f577a-f64e-478a-ad53-12ce26e6d29c)
 
 
@@ -112,6 +111,8 @@ This section will guide you through the initial setup and help you get started w
 - You can add minute description, choose the corresponding action taken, mention Assigned to (some attendee if any) and set date i.e Completed by.
 
 ![image](https://github.com/Diya050/meeting/assets/124448340/f382f3cc-48ab-4a64-9aa0-a5c1d52037b8)
+
+![image](https://github.com/Diya050/meeting/assets/124448340/92a857db-eeda-4a80-89fd-298dd4750900)
 
 - When the meeting ends, you can click the `End Meeting` button below the status bar. This will send a "Meeting Ended" message to all the attendees and change the meeting status to `Completed`.
   
