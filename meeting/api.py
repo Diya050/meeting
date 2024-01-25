@@ -23,29 +23,29 @@ def send_invitation_emails(meeting):
 					"committee_name": meeting.committee_name,
 					"sender": sender_fullname
 				})
-				message = frappe.get_template("templates/emails/meeting_invitation.html").render({
-					"sender":sender_fullname,
-					"start_datetime":meeting.start_datetime,
-					"end_datetime":meeting.end_datetime,
-					"venue": meeting.venue,
-					"invitation_message": invitation_message,
-					"committee_name": meeting.committee_name,
-					"agenda": meeting.agenda,
-					"route": meeting.route,
-					"supplementary_agenda": meeting.supplementary_agenda,
-					"by_chairman_permission": meeting.by_chairman_permission,
-				})
-				frappe.sendmail(
-				recipients=[d.attendee for d in meeting.attendees],
-				sender=frappe.session.user,
-				subject="New Meeting: " + meeting.title,
-				message=message,
-				reference_doctype=meeting.doctype,
-				reference_name=meeting.name,
-				)
-				meeting.status = "Invitation Sent"
-				meeting.save()
-				frappe.msgprint(_("Invitation Sent"))
+			message = frappe.get_template("templates/emails/meeting_invitation.html").render({
+				"sender":sender_fullname,
+				"start_datetime":meeting.start_datetime,
+				"end_datetime":meeting.end_datetime,
+				"venue": meeting.venue,
+				"invitation_message": invitation_message,
+				"committee_name": meeting.committee_name,
+				"agenda": meeting.agenda,
+				"route": meeting.route,
+				"supplementary_agenda": meeting.supplementary_agenda,
+				"by_chairman_permission": meeting.by_chairman_permission,
+			})
+			frappe.sendmail(
+			recipients=[d.attendee for d in meeting.attendees],
+			sender=frappe.session.user,
+			subject="New Meeting: " + meeting.title,
+			message=message,
+			reference_doctype=meeting.doctype,
+			reference_name=meeting.name,
+			)
+			meeting.status = "Invitation Sent"
+			meeting.save()
+			frappe.msgprint(_("Invitation Sent"))
 		else:
 			frappe.msgprint("Enter atleast one Attendee for Sending")
 	else:
