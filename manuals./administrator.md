@@ -144,7 +144,14 @@ This section will guide you through the initial setup and help you get started w
 
 - If you create a meeting of same name it will automatically add suitable suffix to it's name.
 
-- It generates unique route for each meeting, thus enhacing privacy. Also, meetings created by a particular user could be viewed by him/her only on the desk. But adm,inistrator could view all the meetings.
+- It generates unique route for each meeting, thus enhacing privacy. Also, meetings created by a particular user could be viewed by him/her only on the desk. But administrator could view all the meetings.
 
-  
+- You can also obtain a pdf of your progress by clicking `Print icon`>>`Pdf Button`: 
+
+![image](https://github.com/Diya050/meeting/assets/124448340/80d54663-deac-41c4-991d-833a17986ed6)
+
+![image](https://github.com/Diya050/meeting/assets/124448340/1b0fa92c-882e-4458-81eb-6e498807bf2f)
+
+![image](https://github.com/Diya050/meeting/assets/124448340/5f19711a-8771-4812-9722-55551791c67b)
+
 > To clinch it all, the Meeting App powered by the Frappe Framework is your go-to solution for revolutionizing the way you manage and conduct meetings. This comprehensive documentation has provided you with a step-by-step guide on how to install, set up, and make the most of this powerful tool.
