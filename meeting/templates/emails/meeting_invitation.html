@@ -34,13 +34,12 @@
         <b>Meeting Website: </b>https://erp.gndec.ac.in/{{ route }}
     </blockquote>
     <br>
-    <br>
-{% if invitation_message %}
-<h3>Invitation Message</h3>
-Respected {{ attendee }},<br><br>
-<p>{{ invitation_message or '' }}</p>
-{% endif %}
-<br>
+    {% if invitation_messages %}
+    <h3>Invitation Messages</h3>
+    {% for invitation_message in invitation_messages %}
+    <p>{{ invitation_message or '' }}</p>
+    {% endfor %}
+    {% endif %}
     <br>
     {% if agenda %}
     <h4>Meeting Agenda</h4>

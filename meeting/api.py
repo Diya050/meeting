@@ -15,38 +15,38 @@ def send_invitation_emails(meeting):
 
 	if meeting.status == "Planned":
 		if meeting.attendees:
+			invitation_messages = []
 			for attendee in meeting.attendees:
-				attendee_fullname = attendee.full_name 
 				invitation_message = frappe.render_template(meeting.invitation_message, {
+					"attendee": attendee.full_name,
 					"title": meeting.title,
 					"route": meeting.route,
 					"committee_name": meeting.committee_name,
 					"sender": sender_fullname
 				})
-				
+				invitation_messages.append(invitation_message)
 	
-				message = frappe.get_template("templates/emails/meeting_invitation.html").render({
-					"sender": sender_fullname,
-					"start_datetime": meeting.start_datetime,
-					"end_datetime": meeting.end_datetime,
-					"venue": meeting.venue,
-					"attendee": attendee_fullname,
-					"invitation_messages": invitation_message,
-					"committee_name": meeting.committee_name,
-					"agenda": meeting.agenda,
-					"route": meeting.route,
-					"supplementary_agenda": meeting.supplementary_agenda,
-					"by_chairman_permission": meeting.by_chairman_permission,
-				})
-	
-				frappe.sendmail(
-					recipients=[d.attendee for d in meeting.attendees],
-					sender=frappe.session.user,
-					subject="New Meeting: " + meeting.title,
-					message=message,
-					reference_doctype=meeting.doctype,
-					reference_name=meeting.name,
-				)
+			message = frappe.get_template("templates/emails/meeting_invitation.html").render({
+				"sender": sender_fullname,
+				"start_datetime": meeting.start_datetime,
+				"end_datetime": meeting.end_datetime,
+				"venue": meeting.venue,
+				"invitation_messages": invitation_messages,  # Pass the list of invitation messages
+				"committee_name": meeting.committee_name,
+				"agenda": meeting.agenda,
+				"route": meeting.route,
+				"supplementary_agenda": meeting.supplementary_agenda,
+				"by_chairman_permission": meeting.by_chairman_permission,
+			})
+
+			frappe.sendmail(
+				recipients=[d.attendee for d in meeting.attendees],
+				sender=frappe.session.user,
+				subject="New Meeting: " + meeting.title,
+				message=message,
+				reference_doctype=meeting.doctype,
+				reference_name=meeting.name,
+			)
 			meeting.status = "Invitation Sent"
 			meeting.save()
 			frappe.msgprint(_("Invitation Sent"))
