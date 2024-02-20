@@ -30,7 +30,7 @@ def send_invitation_emails(meeting):
 				"start_datetime": meeting.start_datetime,
 				"end_datetime": meeting.end_datetime,
 				"venue": meeting.venue,
-				"invitation_messages": invitation_message,
+				"invitation_message": invitation_message,
 				"committee_name": meeting.committee_name,
 				"agenda": meeting.agenda,
 				"route": meeting.route,
