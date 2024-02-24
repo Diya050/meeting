@@ -18,17 +18,18 @@ def send_invitation_emails(meeting):
             for attendee in meeting.attendees:
                 # Render the invitation message template for each attendee
                 invitation_message = frappe.render_template("templates/emails/meeting_invitation.html", {
-                    "sender": sender_fullname,
                     "start_datetime": meeting.start_datetime,
                     "end_datetime": meeting.end_datetime,
                     "venue": meeting.venue,
                     "committee_name": meeting.committee_name,
+                    "sender": sender_fullname,
                     "route": meeting.route,
                     "invitation_message": meeting.invitation_message,
                     "agenda": meeting.agenda,
                     "supplementary_agenda": meeting.supplementary_agenda,
                     "by_chairman_permission": meeting.by_chairman_permission,
-                    "attendee": attendee.full_name  # Pass individual attendee's name
+                    "attendee": attendee.full_name,
+                    "title": meeting.title,
                 })
 
                 # Send the invitation email to this attendee
