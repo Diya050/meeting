@@ -10,48 +10,49 @@ from frappe.utils import format_datetime
 
 @frappe.whitelist()
 def send_invitation_emails(meeting):
-	meeting = frappe.get_doc("Meeting", meeting)
-	sender_fullname = get_fullname(frappe.session.user)
+    meeting = frappe.get_doc("Meeting", meeting)
+    sender_fullname = get_fullname(frappe.session.user)
 
-	if meeting.status == "Planned":
-		if meeting.attendees:
-			invitation_message = frappe.render_template(meeting.invitation_message, {
-				"title": meeting.title,
-				"route": meeting.route,
-				"committee_name": meeting.committee_name,
-				"sender": sender_fullname				
-			})
-				
-	
-			message = frappe.get_template("templates/emails/meeting_invitation.html").render({
-				"sender": sender_fullname,
-				"start_datetime": meeting.start_datetime,
-				"end_datetime": meeting.end_datetime,
-				"venue": meeting.venue,
-				"invitation_message": invitation_message,
-				"committee_name": meeting.committee_name,
-				"agenda": meeting.agenda,
-				"route": meeting.route,
-				"attendee": [attendee.full_name for attendee in meeting.attendees],
-				"supplementary_agenda": meeting.supplementary_agenda,
-				"by_chairman_permission": meeting.by_chairman_permission,
-			})
+    if meeting.status == "Planned":
+        if meeting.attendees:
+            for attendee in meeting.attendees:
+                # Render the invitation message template for each attendee
+                invitation_message = frappe.render_template("templates/emails/meeting_invitation.html", {
+                    "sender": sender_fullname,
+                    "start_datetime": meeting.start_datetime,
+                    "end_datetime": meeting.end_datetime,
+                    "venue": meeting.venue,
+                    "committee_name": meeting.committee_name,
+                    "route": meeting.route,
+                    "invitation_message": meeting.invitation_message,
+                    "agenda": meeting.agenda,
+                    "supplementary_agenda": meeting.supplementary_agenda,
+                    "by_chairman_permission": meeting.by_chairman_permission,
+                    "attendee": attendee.full_name  # Pass individual attendee's name
+                })
 
-			frappe.sendmail(
-				recipients=[d.attendee for d in meeting.attendees],
-				sender=frappe.session.user,
-				subject="New Meeting: " + meeting.title,
-				message=message,
-				reference_doctype=meeting.doctype,
-				reference_name=meeting.name,
-			)
-			meeting.status = "Invitation Sent"
-			meeting.save()
-			frappe.msgprint(_("Invitation Sent"))
-		else:
-			frappe.msgprint("Enter at least one Attendee for Sending")
-	else:
-		frappe.msgprint(_("Meeting Status must be 'Planned'"))
+                # Send the invitation email to this attendee
+                send_invitation_email(attendee.attendee, sender_fullname, invitation_message, meeting)
+
+            meeting.status = "Invitation Sent"
+            meeting.save()
+            frappe.msgprint(_("Invitation Sent"))
+        else:
+            frappe.msgprint("Enter at least one Attendee for Sending")
+    else:
+        frappe.msgprint(_("Meeting Status must be 'Planned'"))
+
+def send_invitation_email(recipient, sender, invitation_message, meeting):
+    # Prepare and send the invitation email
+    frappe.sendmail(
+        recipients=[recipient],
+        sender=frappe.session.user,
+        subject="New Meeting: " + meeting.title,
+        message=invitation_message,
+        reference_doctype=meeting.doctype,
+        reference_name=meeting.name,
+    )
+
 
 		
 @frappe.whitelist()
