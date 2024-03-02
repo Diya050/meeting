@@ -15,16 +15,22 @@ def send_invitation_emails(meeting):
 
     if meeting.status == "Planned":
         if meeting.attendees:
+            invitation_message = frappe.render_template(meeting.invitation_message, {
+				"title": meeting.title,
+				"route": meeting.route,
+				"committee_name": meeting.committee_name,
+				"sender": sender_fullname				
+			})
             for attendee in meeting.attendees:
                 # Render the invitation message template for each attendee
-                invitation_message = frappe.render_template("templates/emails/meeting_invitation.html", {
+                message = frappe.render_template("templates/emails/meeting_invitation.html", {
                     "start_datetime": meeting.start_datetime,
                     "end_datetime": meeting.end_datetime,
                     "venue": meeting.venue,
                     "committee_name": meeting.committee_name,
                     "sender": sender_fullname,
                     "route": meeting.route,
-                    "invitation_message": meeting.invitation_message,
+                    "invitation_message": invitation_message,
                     "agenda": meeting.agenda,
                     "supplementary_agenda": meeting.supplementary_agenda,
                     "by_chairman_permission": meeting.by_chairman_permission,
@@ -33,7 +39,7 @@ def send_invitation_emails(meeting):
                 })
 
                 # Send the invitation email to this attendee
-                send_invitation_email(attendee.attendee, sender_fullname, invitation_message, meeting)
+                send_invitation_email(attendee.attendee, sender_fullname, message, meeting)
 
             meeting.status = "Invitation Sent"
             meeting.save()
