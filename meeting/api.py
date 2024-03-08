@@ -21,6 +21,10 @@ def send_invitation_emails(meeting):
 				"committee_name": meeting.committee_name,
 				"sender": sender_fullname				
 			})
+			
+            if meeting.merge_with_invitation and meeting.additional_information:
+                    invitation_message += "<br><br>" + meeting.additional_information
+                    
             for attendee in meeting.attendees:
                 # Render the invitation message template for each attendee
                 message = frappe.render_template("templates/emails/meeting_invitation.html", {
@@ -48,6 +52,7 @@ def send_invitation_emails(meeting):
             frappe.msgprint("Enter at least one Attendee for Sending")
     else:
         frappe.msgprint(_("Meeting Status must be 'Planned'"))
+        
 
 def send_invitation_email(recipient, sender, invitation_message, meeting):
     # Prepare and send the invitation email
@@ -59,6 +64,26 @@ def send_invitation_email(recipient, sender, invitation_message, meeting):
         reference_doctype=meeting.doctype,
         reference_name=meeting.name,
     )
+
+@frappe.whitelist()
+def send_emails(meeting):
+    meeting = frappe.get_doc("Meeting", meeting)
+    sender_fullname = get_fullname(frappe.session.user)
+    
+    if meeting.attendees:
+         for attendee in meeting.attendees:
+             frappe.sendmail(
+                 recipients=[d.attendee for d in meeting.attendees],
+                 sender=frappe.session.user,
+                 subject=meeting.title,
+                 message=meeting.email_content,
+                 reference_doctype=meeting.doctype,
+                 reference_name=meeting.name,
+             )
+         meeting.save()
+         frappe.msgprint(_("Email Sent"))
+    else:
+         frappe.msgprint("Enter at least one Attendee for Sending")
 
 
 		

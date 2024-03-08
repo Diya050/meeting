@@ -20,6 +20,26 @@ frappe.ui.form.on("Meeting", {
 	}
 
 	},
+	
+	send_email: function(frm) {
+		if(frm.doc.__islocal) {
+					msgprint(__("Please save before Sending."));
+					throw "Sending error";
+				}
+		else{
+			frappe.call({
+				method: "meeting.api.send_emails",
+				args: {
+					meeting: frm.doc.name
+				},
+					callback: function(r) {
+							frm.clear_custom_buttons()
+							frm.refresh()
+						}
+			});
+	}
+
+	},
 		start_meeting: function(frm) {
 			if(frm.doc.__islocal) {
 					msgprint(__("Please save before Sending."));
