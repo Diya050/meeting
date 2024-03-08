@@ -15,15 +15,19 @@ def send_invitation_emails(meeting):
 
     if meeting.status == "Planned":
         if meeting.attendees:
-            invitation_message = frappe.render_template(meeting.invitation_message, {
-				"title": meeting.title,
-				"route": meeting.route,
-				"committee_name": meeting.committee_name,
-				"sender": sender_fullname				
-			})
+            if meeting.send_as_a_separate_invitation_without_default_text:
+                    invitation_message = meeting.additional_information
+            else:
+                    if meeting.merge_with_invitation and meeting.additional_information:
+                            invitation_message += "<br><br>" + meeting.additional_information
+                            
+                    invitation_message = frappe.render_template(meeting.invitation_message, {
+			        	"title": meeting.title,
+        				"route": meeting.route,
+        				"committee_name": meeting.committee_name,
+	        			"sender": sender_fullname				
+		        	})
 			
-            if meeting.merge_with_invitation and meeting.additional_information:
-                    invitation_message += "<br><br>" + meeting.additional_information
                     
             for attendee in meeting.attendees:
                 # Render the invitation message template for each attendee

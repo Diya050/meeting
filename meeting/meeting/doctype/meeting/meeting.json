@@ -33,6 +33,7 @@
   "invitation_message",
   "additional_information",
   "merge_with_invitation",
+  "send_as_a_separate_invitation_without_default_text",
   "send_emails",
   "compose_a_new_email_section",
   "email_content",
@@ -206,7 +207,7 @@
    "default": "0",
    "fieldname": "merge_with_invitation",
    "fieldtype": "Check",
-   "label": "Merge with invitation"
+   "label": "Merge with default invitation"
   },
   {
    "collapsible": 1,
@@ -223,13 +224,19 @@
    "fieldname": "send_email",
    "fieldtype": "Button",
    "label": "Send email"
+  },
+  {
+   "default": "0",
+   "fieldname": "send_as_a_separate_invitation_without_default_text",
+   "fieldtype": "Check",
+   "label": "Send as a separate invitation (without default text)"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "show_in_website",
  "links": [],
- "modified": "2024-03-08 13:31:36.044777",
+ "modified": "2024-03-08 13:38:41.528247",
  "modified_by": "Administrator",
  "module": "Meeting",
  "name": "Meeting",
