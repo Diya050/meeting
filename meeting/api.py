@@ -23,7 +23,7 @@ def send_invitation_emails(meeting):
 	        			"sender": sender_fullname				
 		    })
 		        	
-		    if meeting.merge_with_invitation and meeting.additional_information:
+                    if meeting.merge_with_invitation and meeting.additional_information:
                             invitation_message += "<br><br>" + meeting.additional_information
 			
                     
@@ -81,10 +81,10 @@ def send_emails(meeting):
                  reference_doctype=meeting.doctype,
                  reference_name=meeting.name,
              )
-         meeting.save()
-         frappe.msgprint(_("Email Sent"))
+             meeting.save()
+             frappe.msgprint(_("Email Sent"))
     else:
-         frappe.msgprint("Enter at least one Attendee for Sending")
+             frappe.msgprint("Enter at least one Attendee for Sending")
 
 
 		
