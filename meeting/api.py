@@ -6,8 +6,6 @@ from frappe.utils import get_datetime, now_datetime
 from datetime import datetime, timedelta
 from frappe.utils import format_datetime
 
-
-
 @frappe.whitelist()
 def send_invitation_emails(meeting):
     meeting = frappe.get_doc("Meeting", meeting)
@@ -17,16 +15,16 @@ def send_invitation_emails(meeting):
         if meeting.attendees:
             if meeting.send_as_a_separate_invitation_without_default_text:
                     invitation_message = meeting.additional_information
-            else:
-                    if meeting.merge_with_invitation and meeting.additional_information:
-                            invitation_message += "<br><br>" + meeting.additional_information
-                            
+            else:           
                     invitation_message = frappe.render_template(meeting.invitation_message, {
 			        	"title": meeting.title,
         				"route": meeting.route,
         				"committee_name": meeting.committee_name,
 	        			"sender": sender_fullname				
-		        	})
+		    })
+		        	
+		    if meeting.merge_with_invitation and meeting.additional_information:
+                            invitation_message += "<br><br>" + meeting.additional_information
 			
                     
             for attendee in meeting.attendees:
@@ -75,7 +73,6 @@ def send_emails(meeting):
     sender_fullname = get_fullname(frappe.session.user)
     
     if meeting.attendees:
-         for attendee in meeting.attendees:
              frappe.sendmail(
                  recipients=[d.attendee for d in meeting.attendees],
                  sender=frappe.session.user,
